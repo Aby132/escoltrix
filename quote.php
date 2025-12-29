@@ -96,56 +96,15 @@ include 'includes/header.php';
                                     <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="company">Company Name *</label>
-                                    <input type="text" id="company" name="company" placeholder="Your company name" required>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-section">
-                            <h3>Project Information</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="projectType">Service Required *</label>
-                                    <select id="projectType" name="projectType" required>
-                                        <option value="">Select service type</option>
-                                        <option value="lightning-protection">Lightning Protection</option>
-                                        <option value="surge-protection">Surge Protection</option>
-                                        <option value="grounding-systems">Grounding Systems</option>
-                                        <option value="complete-solution">Complete Protection Solution</option>
-                                        <option value="consultation">Consultation Only</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="industry">Industry *</label>
-                                    <select id="industry" name="industry" required>
-                                        <option value="">Select your industry</option>
-                                        <option value="oil-gas">Oil & Gas</option>
-                                        <option value="telecommunications">Telecommunications</option>
-                                        <option value="manufacturing">Manufacturing</option>
-                                        <option value="power-utility">Power & Utilities</option>
-                                        <option value="commercial">Commercial Buildings</option>
-                                        <option value="residential">Residential</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                            <div class="form-group">
-                                <label for="location">Project Location *</label>
+                                    <label for="location">Project Location *</label>
                                     <input type="text" id="location" name="location" placeholder="City, State, Country" required>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                    <label for="timeline">Project Timeline *</label>
-                                    <select id="timeline" name="timeline" required>
-                                        <option value="">When do you need this?</option>
-                                        <option value="urgent">Urgent (Within 2 weeks)</option>
-                                        <option value="immediate">Within 1 month</option>
-                                        <option value="short">1-3 months</option>
-                                        <option value="medium">3-6 months</option>
-                                    <option value="planning">Planning phase</option>
-                                </select>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="company">Company Name (Optional)</label>
+                                    <input type="text" id="company" name="company" placeholder="Your company name">
                                 </div>
                             </div>
                         </div>
@@ -153,8 +112,8 @@ include 'includes/header.php';
                         <div class="form-section">
                             <h3>Additional Information</h3>
                             <div class="form-group">
-                                <label for="requirements">Detailed Requirements *</label>
-                                <textarea id="requirements" name="requirements" rows="6" placeholder="Please describe your lightning protection requirements, facility details, any specific challenges, and any additional information that would help us provide an accurate quote." required></textarea>
+                                <label for="requirements">Detailed Requirements (Optional)</label>
+                                <textarea id="requirements" name="requirements" rows="4" placeholder="Describe your requirements (optional)"></textarea>
                             </div>
                         </div>
                         
@@ -275,13 +234,14 @@ include 'includes/header.php';
             if (name === 'fullName') { if (v.length < 2) { setQErr(el,'Enter at least 2 characters'); return false; } }
             if (name === 'email') { const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/; if (!re.test(v)) { setQErr(el,'Enter a valid email'); return false; } }
             if (name === 'phone') { const re=/^[+]?\d{7,16}$/; if (!re.test(v.replace(/\s/g,''))) { setQErr(el,'Enter a valid phone'); return false; } }
-            if (['projectType','industry','location','timeline'].includes(name)) { if (!v) { setQErr(el,'This field is required'); return false; } }
-            if (name === 'requirements') { if (v.length < 10) { setQErr(el,'Enter at least 10 characters'); return false; } }
+            if (name === 'location') { if (!v) { setQErr(el,'Location is required'); return false; } }
+            // Company and Requirements are optional, no validation check needed except max length if desired
             clearQErr(el); return true;
         }
 
         const qForm = document.getElementById('quoteForm');
-        const qInputs = qForm.querySelectorAll('[name="fullName"],[name="email"],[name="phone"],[name="company"],[name="projectType"],[name="industry"],[name="location"],[name="timeline"],[name="requirements"]');
+        // Only get required inputs for live validation events
+        const qInputs = qForm.querySelectorAll('[name="fullName"],[name="email"],[name="phone"],[name="location"]');
         qInputs.forEach(el => { el.addEventListener('input',()=>validateQuoteField(el)); el.addEventListener('blur',()=>validateQuoteField(el)); });
 
         // Form submission

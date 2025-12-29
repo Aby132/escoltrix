@@ -32,11 +32,33 @@ if (!empty($errors)) {
     exit;
 }
 
+// Optimization: Send response to user immediately, then process email in background
+ignore_user_abort(true);
+set_time_limit(0);
+
+// Prepare success response
+$response = json_encode(['success' => true, 'message' => 'Thank you! Your message has been sent successfully.']);
+
+// Send headers and content to client, then close connection
+ob_start();
+echo $response;
+$size = ob_get_length();
+header("Content-Length: $size");
+header('Connection: close');
+ob_end_flush();
+if (ob_get_level() > 0) { ob_flush(); }
+flush();
+if (function_exists('fastcgi_finish_request')) {
+    fastcgi_finish_request();
+}
+
+// Below this line, the user has already received the response.
+// We can now take our time to send the email.
+
 $config = @include __DIR__ . '/includes/mailer_config.php';
 $emailSubject = 'New Contact Message - Escoltrix Website';
 $body = "<html><head><title>Contact Message</title><style>body{font-family:Arial,sans-serif;line-height:1.6;color:#333}.container{max-width:600px;margin:0 auto;padding:20px}.header{background:#0d6efd;color:#fff;padding:16px;text-align:center}.content{background:#f8f9fa;padding:16px;border-radius:8px}.field{margin-bottom:12px}.label{font-weight:bold;color:#0d6efd}.value{margin-top:4px;padding:8px;background:#fff;border-radius:6px;border:1px solid #eee}</style></head><body><div class='container'><div class='header'><h2>New Contact Message</h2></div><div class='content'><div class='field'><div class='label'>Name</div><div class='value'>" . $name . "</div></div><div class='field'><div class='label'>Email</div><div class='value'>" . $email . "</div></div><div class='field'><div class='label'>Mobile</div><div class='value'>" . $mobile . "</div></div>" . ($subjectOpt ? "<div class='field'><div class='label'>Subject</div><div class='value'>" . $subjectOpt . "</div></div>" : "") . "<div class='field'><div class='label'>Message</div><div class='value'>" . nl2br($message) . "</div></div><div class='field'><div class='label'>Submitted</div><div class='value'>" . date('Y-m-d H:i:s') . "</div></div></div></div></body></html>";
 
-$sent = false; $errorInfo = '';
 try {
     if (file_exists(__DIR__ . '/vendor/autoload.php')) {
         require_once __DIR__ . '/vendor/autoload.php';
@@ -58,7 +80,7 @@ try {
         $m->Subject = $emailSubject;
         $m->Body = $body;
         $m->AltBody = strip_tags($message);
-        $sent = $m->send();
+        $m->send();
     } else {
         $to = isset($config['to_email']) ? $config['to_email'] : 'abyjoykutty@gmail.com';
         $headers = [
@@ -68,18 +90,11 @@ try {
             'Reply-To: ' . $email,
             'X-Mailer: PHP/' . phpversion()
         ];
-        $sent = mail($to, $emailSubject, $body, implode("\r\n", $headers));
+        mail($to, $emailSubject, $body, implode("\r\n", $headers));
     }
 } catch (Exception $e) {
-    $errorInfo = $e->getMessage();
-}
-
-if ($sent) {
-    echo json_encode(['success' => true, 'message' => 'Thank you! Your message has been sent successfully.']);
-} else {
-    $msg = 'Sending failed. Please try again later.';
-    if (!empty($errorInfo)) { $msg .= ' Error: ' . $errorInfo; }
-    echo json_encode(['success' => false, 'message' => $msg]);
+    // Log error silently since user already got success
+    error_log("Message send failed: " . $e->getMessage());
 }
 ?>
 

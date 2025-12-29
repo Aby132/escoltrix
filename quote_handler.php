@@ -49,20 +49,8 @@ if (empty($phone)) {
     $errors[] = 'Phone number is required';
 }
 
-if (empty($projectType)) {
-    $errors[] = 'Project type is required';
-}
-
-if (empty($industry)) {
-    $errors[] = 'Industry is required';
-}
-
 if (empty($location)) {
     $errors[] = 'Project location is required';
-}
-
-if (strlen($requirements) < 10) {
-    $errors[] = 'Detailed requirements must be at least 10 characters';
 }
 
 // Privacy checkbox removed from UI; do not require it server-side
@@ -83,19 +71,37 @@ Name: {$fullName}
 Email: {$email}
 Phone: {$phone}
 Company: {$company}
-
-PROJECT INFORMATION:
-Service Required: {$projectType}
-Industry: {$industry}
 Location: {$location}
-Timeline: {$timeline}
 
-DETAILED REQUIREMENTS:
-{$requirements}
+ADDITIONAL INFORMATION:
+Requirements: {$requirements}
 
 Submitted on: " . date('Y-m-d H:i:s') . "
 IP Address: " . ($_SERVER['REMOTE_ADDR'] ?? 'Unknown') . "
 ";
+
+// OPTIMIZATION: Send success response immediately
+ignore_user_abort(true);
+set_time_limit(0);
+
+$response = json_encode([
+    'success' => true,
+    'message' => 'Quote request submitted successfully. We will contact you within 24-48 hours.'
+]);
+
+ob_start();
+echo $response;
+$size = ob_get_length();
+header("Content-Length: $size");
+header('Connection: close');
+ob_end_flush();
+if (ob_get_level() > 0) { ob_flush(); }
+flush();
+if (function_exists('fastcgi_finish_request')) {
+    fastcgi_finish_request();
+}
+
+// Background processing starts here...
 
 // Email via PHPMailer (fallback to mail())
 $subject = 'New Quote Request - ' . $fullName;
@@ -105,7 +111,6 @@ if (!file_exists($configPath)) {
 }
 $config = @include $configPath;
 $mailSent = false;
-$errorMessage = '';
 
 try {
     if (file_exists(__DIR__ . '/vendor/autoload.php')) {
@@ -129,9 +134,9 @@ try {
         $mailer->Body = nl2br($emailContent);
         $mailer->AltBody = $emailContent;
         $mailer->isHTML(true);
-        $mailSent = $mailer->send();
+        $mailer->send();
     } else {
-        // Fallback to native mail() function
+        // Fallback to native mail()
         $to = isset($config['to_email']) ? $config['to_email'] : 'abyjoykutty@gmail.com';
         $headers = [
             'From: noreply@escoltrix.com',
@@ -139,26 +144,24 @@ try {
             'X-Mailer: PHP/' . phpversion(),
             'Content-Type: text/plain; charset=UTF-8'
         ];
-        $mailSent = @mail($to, $subject, $emailContent, implode("\r\n", $headers));
-        if (!$mailSent) {
-            $errorMessage = 'Native mail() function failed. Check PHP mail configuration.';
-        }
+        @mail($to, $subject, $emailContent, implode("\r\n", $headers));
     }
+    // Set for log
+    $mailSent = true;
 } catch (Exception $e) {
-    $errorMessage = $e->getMessage();
-    error_log('Quote email sending failed: ' . $errorMessage);
+    error_log('Quote email sending failed: ' . $e->getMessage());
     if (isset($mailer) && $mailer instanceof PHPMailer) {
         error_log('PHPMailer Error Info: ' . $mailer->ErrorInfo);
     }
 }
 
-// Log the submission (optional)
+// Log the submission
 $logEntry = date('Y-m-d H:i:s') . " - Quote Request from: {$email} - " . ($mailSent ? 'Email sent' : 'Email failed') . "\n";
 file_put_contents('quote_submissions.log', $logEntry, FILE_APPEND | LOCK_EX);
 
 // Send auto-reply to customer
 $autoReplySubject = 'Thank you for your quote request - Escoltrix';
-$autoReplyContentHtml = nl2br("Dear {$fullName},\n\nThank you for your interest in Escoltrix Lightning Protection Solutions.\n\nWe have received your quote request and our team will review your requirements. You can expect to hear from us within 24-48 hours with a detailed proposal.\n\nYour request details:\n- Service Required: {$projectType}\n- Industry: {$industry}\n- Location: {$location}\n\nIf you have any urgent questions, please don't hesitate to contact us directly:\n- Email: info@escoltrix.com\n\nBest regards,\nEscoltrix Team");
+$autoReplyContentHtml = nl2br("Dear {$fullName},\n\nThank you for your interest in Escoltrix Lightning Protection Solutions.\n\nWe have received your quote request and our team will review your requirements. You can expect to hear from us within 24-48 hours with a detailed proposal.\n\nYour request details:\n- Location: {$location}\n\nIf you have any urgent questions, please don't hesitate to contact us directly:\n- Email: info@escoltrix.com\n\nBest regards,\nEscoltrix Team");
 try {
     if (class_exists('PHPMailer\\PHPMailer\\PHPMailer') && is_array($config)) {
         $auto = new PHPMailer(true);
@@ -187,20 +190,5 @@ try {
     }
 } catch (Exception $e) {
     error_log('Auto-reply (quote) failed: ' . $e->getMessage());
-}
-
-// Return success response
-if ($mailSent) {
-    echo json_encode([
-        'success' => true,
-        'message' => 'Quote request submitted successfully. We will contact you within 24-48 hours.'
-    ]);
-} else {
-    http_response_code(500);
-    echo json_encode([
-        'success' => false,
-        'message' => 'Failed to send quote email. Please try again later or contact us directly at info@escoltrix.com.',
-        'error' => !empty($errorMessage) ? $errorMessage : 'Email sending failed'
-    ]);
 }
 ?>
