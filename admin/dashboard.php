@@ -111,6 +111,7 @@ $csrfToken = admin_generate_csrf_token();
             <div class="brand">Escoltrix Admin</div>
             <nav class="nav-links">
                 <a href="dashboard.php" class="active">Overview</a>
+                <a href="manage_news.php">News & Updates</a>
                 <a href="#">Messages</a>
                 <a href="#">Quote Requests</a>
                 <a href="#">System Health</a>

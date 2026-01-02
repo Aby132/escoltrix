@@ -1,377 +1,233 @@
 <?php 
-$page_title = "Services - Escoltrix Lightning Protection Solutions";
-$page_description = "Comprehensive lightning protection services including consultation, design, installation, and maintenance by Escoltrix experts.";
+$page_title = "Expert Services - Escoltrix Lightning Protection";
+$page_description = "World-class lightning protection services: Risk Assessment, Custom System Design, Professional Installation, and Certifications.";
 include 'includes/header.php'; 
 ?>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <!-- Creative Service Hero -->
+    <section class="service-hero-creative">
+        <div class="hero-bg-parallax">
+            <img src="Images/lightning_infrastructure.png" alt="Lightning Protection Engineering">
+            <div class="hero-overlay-gradient"></div>
+        </div>
         <div class="container">
-            <div class="page-header-content" data-aos="fade-up">
-                <h1>Our Services</h1>
-                <p>Complete Lightning Protection Solutions & Expert Services</p>
-                <nav class="breadcrumb">
-                    <a href="index.php">Home</a>
-                    <span>/</span>
-                    <span>Services</span>
-                </nav>
+            <div class="hero-content-modern" data-aos="fade-up">
+                <div class="hero-badge">
+                    <i class="fas fa-certificate"></i> Certified Expertise
+                </div>
+                <h1>Engineering <span class="text-gradient">Safety</span> into Every Structure</h1>
+                <p>From comprehensive risk analysis to precision installation—we provide the complete spectrum of lightning protection engineering services.</p>
+                <div class="hero-actions">
+                    <a href="#risk-assessment" class="btn-hero-primary">Explore Services <i class="fas fa-arrow-down"></i></a>
+                    <a href="quote.php" class="btn-hero-outline">Get a Quote <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Overview -->
-    <section class="services-overview">
+    <!-- Services Navigation Grid -->
+    <section class="services-nav-grid">
         <div class="container">
-            <div class="overview-content" data-aos="fade-up">
-                <h2>Comprehensive Lightning Protection Services</h2>
-                <p>At Escoltrix, we provide end-to-end lightning protection services from initial consultation to ongoing maintenance. Our team of certified experts ensures your facility receives the most effective and reliable protection against lightning strikes and electrical surges.</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <i class="fas fa-search"></i>
+            <div class="grid-layout-3">
+                <a href="#risk-assessment" class="service-nav-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box">
+                        <i class="fas fa-chart-pie"></i>
                     </div>
                     <h3>Risk Assessment</h3>
-                    <p>Comprehensive evaluation of your facility's lightning risk factors and vulnerability analysis.</p>
-                    <ul>
-                        <li>Site evaluation and analysis</li>
-                        <li>Risk calculation per IEC 62305</li>
-                        <li>Detailed assessment reports</li>
-                        <li>Recommendations and solutions</li>
-                    </ul>
-                    <a href="#risk-assessment" class="service-link">Learn More</a>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
+                    <p>IEC 62305 Analysis</p>
+                    <div class="hover-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+                <a href="#system-design" class="service-nav-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
                         <i class="fas fa-drafting-compass"></i>
                     </div>
                     <h3>System Design</h3>
-                    <p>Custom lightning protection system design tailored to your specific facility requirements.</p>
-                    <ul>
-                        <li>CAD drawings and layouts</li>
-                        <li>Material specifications</li>
-                        <li>Compliance with standards</li>
-                        <li>Cost optimization</li>
-                    </ul>
-                    <a href="#system-design" class="service-link">Learn More</a>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
+                    <p>Custom Engineering</p>
+                    <div class="hover-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+                <a href="#installation" class="service-nav-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-box">
                         <i class="fas fa-tools"></i>
                     </div>
                     <h3>Installation</h3>
-                    <p>Professional installation services by certified technicians ensuring optimal system performance.</p>
-                    <ul>
-                        <li>Certified installation teams</li>
-                        <li>Quality control procedures</li>
-                        <li>Safety compliance</li>
-                        <li>Project management</li>
-                    </ul>
-                    <a href="#installation" class="service-link">Learn More</a>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon">
-                        <i class="fas fa-clipboard-check"></i>
-                    </div>
-                    <h3>Testing & Commissioning</h3>
-                    <p>Comprehensive testing and validation of installed lightning protection systems.</p>
-                    <ul>
-                        <li>Continuity testing</li>
-                        <li>Resistance measurements</li>
-                        <li>System verification</li>
-                        <li>Certification documents</li>
-                    </ul>
-                    <a href="#testing" class="service-link">Learn More</a>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-icon">
-                        <i class="fas fa-wrench"></i>
-                    </div>
-                    <h3>Maintenance</h3>
-                    <p>Regular maintenance and inspection services to ensure continued system effectiveness.</p>
-                    <ul>
-                        <li>Scheduled inspections</li>
-                        <li>Preventive maintenance</li>
-                        <li>Component replacement</li>
-                        <li>Performance monitoring</li>
-                    </ul>
-                    <a href="#maintenance" class="service-link">Learn More</a>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Training & Consultation</h3>
-                    <p>Expert training programs and consultation services for your technical staff.</p>
-                    <ul>
-                        <li>Technical training programs</li>
-                        <li>Best practices guidance</li>
-                        <li>Compliance consulting</li>
-                        <li>Ongoing support</li>
-                    </ul>
-                    <a href="#training" class="service-link">Learn More</a>
-                </div>
+                    <p>Certified Setup</p>
+                    <div class="hover-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Service Process -->
-    <section class="service-process">
+    <!-- Detailed Service: Risk Assessment -->
+    <section id="risk-assessment" class="service-detail-block">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Our Service Process</h2>
-            
-            <div class="process-timeline">
-                <div class="process-step" data-aos="fade-right" data-aos-delay="100">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Initial Consultation</h3>
-                        <p>We begin with a detailed consultation to understand your facility's specific requirements and challenges.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-aos="fade-left" data-aos-delay="200">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Site Assessment</h3>
-                        <p>Our experts conduct a comprehensive on-site evaluation to assess lightning risk and existing infrastructure.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-aos="fade-right" data-aos-delay="300">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Custom Design</h3>
-                        <p>We develop a tailored lightning protection system design that meets your specific needs and budget.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-aos="fade-left" data-aos-delay="400">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Professional Installation</h3>
-                        <p>Our certified technicians install the system according to international standards and best practices.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-aos="fade-right" data-aos-delay="500">
-                    <div class="step-number">5</div>
-                    <div class="step-content">
-                        <h3>Testing & Validation</h3>
-                        <p>Comprehensive testing ensures the system performs optimally and meets all safety requirements.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step" data-aos="fade-left" data-aos-delay="600">
-                    <div class="step-number">6</div>
-                    <div class="step-content">
-                        <h3>Ongoing Support</h3>
-                        <p>We provide continuous maintenance and support to ensure long-term system reliability and performance.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Industry Expertise -->
-    <section class="industry-expertise">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Industry Expertise</h2>
-            <p class="section-subtitle" data-aos="fade-up">We serve diverse industries with specialized lightning protection solutions</p>
-            
-            <div class="expertise-grid">
-                <div class="expertise-item" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="expertise-icon">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <h3>Oil & Gas</h3>
-                    <p>Specialized protection for refineries, offshore platforms, and petrochemical facilities with explosive atmosphere considerations.</p>
-                    <div class="expertise-features">
-                        <span>Hazardous area compliance</span>
-                        <span>Offshore installations</span>
-                        <span>Process equipment protection</span>
-                    </div>
-                </div>
-                
-                <div class="expertise-item" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="expertise-icon">
-                        <i class="fas fa-broadcast-tower"></i>
-                    </div>
-                    <h3>Telecommunications</h3>
-                    <p>Critical infrastructure protection for telecom towers, data centers, and communication networks.</p>
-                    <div class="expertise-features">
-                        <span>Tower protection systems</span>
-                        <span>Equipment surge protection</span>
-                        <span>Network continuity</span>
-                    </div>
-                </div>
-                
-                <div class="expertise-item" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="expertise-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Power & Utilities</h3>
-                    <p>Comprehensive protection for power generation, transmission, and distribution infrastructure.</p>
-                    <div class="expertise-features">
-                        <span>Substation protection</span>
-                        <span>Transmission lines</span>
-                        <span>Generation facilities</span>
-                    </div>
-                </div>
-                
-                <div class="expertise-item" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="expertise-icon">
-                        <i class="fas fa-hospital"></i>
-                    </div>
-                    <h3>Healthcare</h3>
-                    <p>Critical facility protection ensuring uninterrupted healthcare services and patient safety.</p>
-                    <div class="expertise-features">
-                        <span>Medical equipment protection</span>
-                        <span>Emergency power systems</span>
-                        <span>Patient safety compliance</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Service Details Sections -->
-    <section id="risk-assessment" class="service-detail">
-        <div class="container">
-            <div class="detail-content">
-                <div class="detail-text" data-aos="fade-right">
-                    <h2>Lightning Risk Assessment</h2>
-                    <p>Our comprehensive risk assessment service evaluates your facility's vulnerability to lightning strikes and determines the appropriate level of protection required.</p>
+            <div class="detail-layout">
+                <div class="detail-content" data-aos="fade-right">
+                    <div class="section-label">Step 01</div>
+                    <h2>Lightning Risk <span class="text-gradient">Assessment</span></h2>
+                    <p class="lead-detail">Precision analysis defining your facility's exact protection requirements according to IEC 62305 standards.</p>
+                    <p>Our engineers conduct a comprehensive evaluation of your site, considering geographical location, structural characteristics, and critical systems to calculate the specific lightning risk index.</p>
                     
-                    <div class="detail-features">
-                        <h3>What We Analyze:</h3>
-                        <ul>
-                            <li>Geographic location and lightning density</li>
-                            <li>Building structure and materials</li>
-                            <li>Environmental factors and surroundings</li>
-                            <li>Critical equipment and systems</li>
-                            <li>Operational requirements and downtime costs</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="detail-benefits">
-                        <h3>Benefits:</h3>
-                        <ul>
-                            <li>Compliance with IEC 62305 standards</li>
-                            <li>Optimized protection investment</li>
-                            <li>Reduced insurance premiums</li>
-                            <li>Enhanced safety and reliability</li>
-                        </ul>
-                    </div>
+                    <ul class="detail-checklist">
+                        <li><i class="fas fa-check-circle"></i> <strong>Site Vulnerability Analysis:</strong> Evaluating environmental & structural factors.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Cost-Benefit Optimization:</strong> Balancing protection levels with budget.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Regulatory Compliance:</strong> Ensuring adherence to local & international codes.</li>
+                    </ul>
                 </div>
-                
                 <div class="detail-visual" data-aos="fade-left">
-                    <div class="visual-placeholder">
-                        <i class="fas fa-chart-line"></i>
-                        <p>Risk Assessment Report</p>
+                    <div class="img-frame-tech">
+                        <img src="Images/lightning_risk_assessment_blueprint.png" alt="Risk Assessment Report">
+                        <div class="tech-overlay">
+                            <i class="fas fa-file-contract"></i>
+                            <span>IEC 62305 Compliant</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications & Standards -->
-    <section class="certifications-standards">
+    <!-- Detailed Service: System Design -->
+    <section id="system-design" class="service-detail-block alt-bg">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Standards & Certifications</h2>
-            <p class="section-subtitle" data-aos="fade-up">We adhere to international standards and maintain industry certifications</p>
+            <div class="detail-layout reverse">
+                <div class="detail-content" data-aos="fade-left">
+                    <div class="section-label">Step 02</div>
+                    <h2>Custom System <span class="text-gradient">Design</span></h2>
+                    <p class="lead-detail">Tailored engineering solutions that blend maximum safety with architectural aesthetics.</p>
+                    <p>We don't just protect structures; we integrate protection. Our design team uses advanced CAD software to create lightning protection systems that are effective yet unobtrusive.</p>
+                    
+                    <div class="feature-grid-mini">
+                        <div class="feat-mini">
+                            <i class="fas fa-layer-group"></i>
+                            <h4>3D Modeling</h4>
+                            <p>Visualizing protection zones.</p>
+                        </div>
+                        <div class="feat-mini">
+                            <i class="fas fa-pencil-ruler"></i>
+                            <h4>Material Specs</h4>
+                            <p>Selecting optimal conductors.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-visual" data-aos="fade-right">
+                    <div class="img-frame-tech">
+                        <img src="Images/cad_lightning_design.png" alt="CAD Design">
+                        <div class="tech-overlay secondary">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Advanced Simulation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Service: Installation -->
+    <section id="installation" class="service-detail-block">
+        <div class="container">
+            <div class="detail-layout">
+                <div class="detail-content" data-aos="fade-right">
+                    <div class="section-label">Step 03</div>
+                    <h2>Professional <span class="text-gradient">Installation</span></h2>
+                    <p class="lead-detail">Expert execution by certified technicians focusing on safety, durability, and performance.</p>
+                    <p>The best design fails without proper installation. Our certified field teams ensure every conductor, ground rod, and air terminal is installed to exact specifications, ensuring low-resistance paths for lightning energy.</p>
+                    
+                    <ul class="detail-checklist">
+                        <li><i class="fas fa-hard-hat"></i> <strong>Certified Teams:</strong> Experienced in high-altitude & complex installs.</li>
+                        <li><i class="fas fa-shield-alt"></i> <strong>Safety First:</strong> Strict adherence to OSHA/ISO safety protocols.</li>
+                        <li><i class="fas fa-history"></i> <strong>Long-Term Durability:</strong> Using corrosion-resistant materials & techniques.</li>
+                    </ul>
+                </div>
+                <div class="detail-visual" data-aos="fade-left">
+                    <div class="img-frame-tech">
+                        <img src="Images/technician_roof_installation.png" alt="Installation">
+                        <div class="tech-overlay warning">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Certified Safety</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maintenance & Testing -->
+    <section class="maintenance-section">
+        <div class="container">
+            <div class="maintenance-card" data-aos="zoom-in">
+                <div class="maint-content">
+                    <h2>Testing, Commissioning & <span class="highlight">Maintenance</span></h2>
+                    <p>Safety is an ongoing commitment. We provide rigorous testing and annual maintenance contracts to ensure your lightning protection system remains fully operational year after year.</p>
+                    <div class="maint-features">
+                        <span><i class="fas fa-check"></i> Earth Resistance Testing</span>
+                        <span><i class="fas fa-check"></i> Continuity Checks</span>
+                        <span><i class="fas fa-check"></i> Physical Inspection</span>
+                    </div>
+                    <a href="contact.php" class="btn-maint">Schedule Inspection</a>
+                </div>
+                <div class="maint-visual">
+                    <img src="Images/lightning_protection_roof.png" alt="Testing Equipment">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Grid -->
+    <section class="industries-creative">
+        <div class="container">
+            <div class="section-header-center" data-aos="fade-up">
+                <h2>Industries We <span class="text-gradient">Protect</span></h2>
+                <p>Specialized solutions for every sector</p>
+            </div>
             
-            <div class="standards-grid">
-                <div class="standard-item" data-aos="flip-left" data-aos-delay="100">
-                    <div class="standard-logo">IEC 62305</div>
-                    <h3>Lightning Protection</h3>
-                    <p>International standard for lightning protection of structures</p>
+            <div class="industry-grid">
+                <div class="ind-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="Images/modern_facility_protection.png" alt="Manufacturing">
+                    <div class="ind-overlay">
+                        <i class="fas fa-industry"></i>
+                        <h3>Manufacturing</h3>
+                        <p>Protecting automated production lines and sensitive electronics.</p>
+                    </div>
                 </div>
-                
-                <div class="standard-item" data-aos="flip-left" data-aos-delay="200">
-                    <div class="standard-logo">NFPA 780</div>
-                    <h3>Lightning Protection Code</h3>
-                    <p>National Fire Protection Association lightning protection standard</p>
+                <div class="ind-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="Images/industrial_tower_storm.png" alt="Telecom">
+                    <div class="ind-overlay">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <h3>Telecom</h3>
+                        <p>Ensuring network uptime for towers and data centers.</p>
+                    </div>
                 </div>
-                
-                <div class="standard-item" data-aos="flip-left" data-aos-delay="300">
-                    <div class="standard-logo">UL 96</div>
-                    <h3>Lightning Protection Components</h3>
-                    <p>Underwriters Laboratories standard for lightning protection components</p>
+                <div class="ind-card" data-aos="fade-up" data-aos-delay="300">
+                    <img src="Images/lightning_infrastructure.png" alt="Power/Energy">
+                    <div class="ind-overlay">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Power & Energy</h3>
+                        <p>Safeguarding substations and renewable energy farms.</p>
+                    </div>
                 </div>
-                
-                <div class="standard-item" data-aos="flip-left" data-aos-delay="400">
-                    <div class="standard-logo">IEEE 142</div>
-                    <h3>Grounding Systems</h3>
-                    <p>IEEE recommended practice for grounding of industrial and commercial power systems</p>
+                <div class="ind-card" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop" alt="Healthcare">
+                    <div class="ind-overlay">
+                        <i class="fas fa-hospital"></i>
+                        <h3>Healthcare</h3>
+                        <p>Critical protection for life-support systems and hospitals.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Support & Maintenance -->
-    <section class="support-maintenance">
+    <!-- CTA Footer -->
+    <section class="cta-creative-footer">
         <div class="container">
-            <div class="support-grid">
-                <div class="support-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="support-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>24/7 Technical Support</h3>
-                    <p>Round-the-clock technical support for emergency situations and system issues.</p>
-                    <ul>
-                        <li>Emergency response team</li>
-                        <li>Remote diagnostics</li>
-                        <li>Technical hotline</li>
-                        <li>Expert consultation</li>
-                    </ul>
+            <div class="cta-box-modern">
+                <div class="cta-text">
+                    <h2>Upgrade Your <span class="text-white">Safety Standard</span></h2>
+                    <p>Don't wait for the storm. Contact Escoltrix engineers today for a free consultation.</p>
                 </div>
-                
-                <div class="support-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="support-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Preventive Maintenance</h3>
-                    <p>Scheduled maintenance programs to ensure optimal system performance and longevity.</p>
-                    <ul>
-                        <li>Annual inspections</li>
-                        <li>Component testing</li>
-                        <li>Performance monitoring</li>
-                        <li>Maintenance reports</li>
-                    </ul>
-                </div>
-                
-                <div class="support-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="support-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Warranty & Guarantee</h3>
-                    <p>Comprehensive warranty coverage and performance guarantees for peace of mind.</p>
-                    <ul>
-                        <li>Product warranties</li>
-                        <li>Installation guarantees</li>
-                        <li>Performance assurance</li>
-                        <li>Extended coverage options</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content" data-aos="fade-up">
-                <h2>Ready to Protect Your Facility?</h2>
-                <p>Contact our experts today for a comprehensive lightning protection assessment and customized solution.</p>
-                <div class="cta-actions">
-                    <a href="quote.php" class="btn btn-primary">Get Quote</a>
-                    <a href="products.php" class="btn btn-secondary">View Our Products</a>
+                <div class="cta-btn-group">
+                    <a href="quote.php" class="btn-primary-glow">Get a Quote</a>
+                    <a href="contact.php" class="btn-outline-light">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -379,498 +235,626 @@ include 'includes/header.php';
 
 <?php include 'includes/footer.php'; ?>
 
-    <!-- Additional CSS for Services Page -->
-    <style>
-        .page-header {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: white;
+<style>
+    /* Global Overrides & Utilities */
+    :root {
+        --primary-orange: #ff6b35;
+        --primary-blue: #1a1a2e;
+        --accent-gold: #ffd700;
+        --text-dark: #333;
+        --text-light: #666;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .service-hero-creative {
+        position: relative;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        color: white;
+    }
+
+    .hero-bg-parallax {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .hero-bg-parallax img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero-overlay-gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(26,26,46,0.95) 0%, rgba(26,26,46,0.7) 60%, rgba(26,26,46,0.2) 100%);
+    }
+
+    .hero-content-modern {
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        border: 1px solid rgba(255,255,255,0.2);
+        color: var(--accent-gold);
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-content-modern h1 {
+        font-size: 3.5rem;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+    }
+
+    .text-gradient {
+        background: linear-gradient(135deg, var(--primary-orange), var(--accent-gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content-modern p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .btn-hero-primary {
+        background: linear-gradient(135deg, var(--primary-orange), #ff8c00);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-hero-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+        color: white;
+    }
+
+    .btn-hero-outline {
+        border: 2px solid white;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-hero-outline:hover {
+        background: white;
+        color: var(--primary-blue);
+    }
+
+    /* ===== NAVIGATION GRID ===== */
+    .services-nav-grid {
+        margin-top: -80px;
+        position: relative;
+        z-index: 10;
+        padding-bottom: 4rem;
+    }
+
+    .grid-layout-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .service-nav-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        text-decoration: none;
+        position: relative;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        border-top: 5px solid transparent;
+    }
+
+    .service-nav-card:hover {
+        transform: translateY(-10px);
+        border-top-color: var(--primary-orange);
+    }
+
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        background: rgba(26,26,46,0.05);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: var(--primary-orange);
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .service-nav-card:hover .icon-box {
+        background: var(--primary-orange);
+        color: white;
+    }
+
+    .service-nav-card h3 {
+        font-size: 1.4rem;
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    .service-nav-card p {
+        color: var(--text-light);
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .hover-arrow {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        color: var(--primary-orange);
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s ease;
+    }
+
+    .service-nav-card:hover .hover-arrow {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* ===== DETAIL SECTIONS ===== */
+    .service-detail-block {
+        padding: 6rem 0;
+    }
+
+    .service-detail-block.alt-bg {
+        background: #f8f9fa;
+    }
+
+    .detail-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+    }
+
+    .detail-layout.reverse {
+        grid-template-columns: 1fr 1fr; /* Logic handled by ordering */
+    }
+
+    .section-label {
+        color: var(--primary-orange);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+    }
+
+    .detail-content h2 {
+        font-size: 2.8rem;
+        color: var(--primary-blue);
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .lead-detail {
+        font-size: 1.2rem;
+        color: #444;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+    }
+
+    .detail-content p {
+        color: var(--text-light);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+
+    .detail-checklist {
+        list-style: none;
+        padding: 0;
+    }
+
+    .detail-checklist li {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        color: #555;
+    }
+
+    .detail-checklist li i {
+        color: var(--primary-orange);
+        font-size: 1.2rem;
+        margin-top: 3px;
+    }
+
+    .feature-grid-mini {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .feat-mini {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .feat-mini i {
+        color: var(--primary-orange);
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .feat-mini h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+        color: var(--primary-blue);
+    }
+
+    .feat-mini p {
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    /* Tech Visuals */
+    .img-frame-tech {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+    }
+
+    .img-frame-tech img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+
+    .img-frame-tech:hover img {
+        transform: scale(1.05);
+    }
+
+    .tech-overlay {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(255,255,255,0.95);
+        padding: 0.8rem 1.5rem;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .tech-overlay i {
+        font-size: 1.5rem;
+        color: #28a745;
+    }
+    .tech-overlay.secondary i { color: #007bff; }
+    .tech-overlay.warning i { color: var(--primary-orange); }
+
+    .tech-overlay span {
+        font-weight: 600;
+        color: var(--primary-blue);
+    }
+
+    /* ===== MAINTENANCE SECTION ===== */
+    .maintenance-section {
+        padding: 4rem 0 6rem;
+    }
+
+    .maintenance-card {
+        background: linear-gradient(135deg, var(--primary-blue), #252541);
+        border-radius: 25px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        color: white;
+        box-shadow: 0 30px 60px rgba(26,26,46,0.25);
+    }
+
+    .maint-content {
+        padding: 4rem;
+    }
+
+    .maint-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .maint-content .highlight {
+        color: var(--accent-gold);
+    }
+
+    .maint-content p {
+        color: rgba(255,255,255,0.8);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+
+    .maint-features {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+    }
+
+    .maint-features span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+    }
+
+    .maint-features i {
+        color: var(--primary-orange);
+    }
+
+    .btn-maint {
+        background: var(--primary-orange);
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .btn-maint:hover {
+        background: #ff8c00;
+        transform: translateY(-2px);
+        color: white;
+    }
+
+    .maint-visual {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .maint-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* ===== INDUSTRIES GRID ===== */
+    .industries-creative {
+        padding: 6rem 0;
+        background: #f8f9fa;
+    }
+
+    .section-header-center {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section-header-center h2 {
+        font-size: 2.5rem;
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+    }
+
+    .industry-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+
+    .ind-card {
+        height: 350px;
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .ind-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .ind-card:hover img {
+        transform: scale(1.1);
+    }
+
+    .ind-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 2rem;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .ind-overlay i {
+        font-size: 2rem;
+        color: var(--primary-orange);
+        margin-bottom: 1rem;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.4s ease;
+    }
+
+    .ind-overlay h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        transform: translateY(20px);
+        transition: all 0.4s ease 0.1s;
+    }
+
+    .ind-overlay p {
+        font-size: 0.9rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease 0.2s;
+        margin: 0;
+    }
+
+    .ind-card:hover .ind-overlay i,
+    .ind-card:hover .ind-overlay h3,
+    .ind-card:hover .ind-overlay p {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    /* ===== CTA FOOTER ===== */
+    .cta-creative-footer {
+        padding: 4rem 0;
+        background: white;
+    }
+
+    .cta-box-modern {
+        background: linear-gradient(135deg, var(--primary-orange), #ff8c00);
+        border-radius: 20px;
+        padding: 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 20px 50px rgba(255, 107, 53, 0.3);
+    }
+
+    .cta-text h2 {
+        color: white;
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .cta-text p {
+        color: rgba(255,255,255,0.9);
+        font-size: 1.1rem;
+    }
+
+    .cta-btn-group {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .btn-primary-glow {
+        background: white;
+        color: var(--primary-orange);
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary-glow:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .btn-outline-light {
+        border: 2px solid white;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-light:hover {
+        background: rgba(255,255,255,0.1);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+        .detail-layout, .detail-layout.reverse {
+            grid-template-columns: 1fr;
             text-align: center;
         }
+
+        .reverse .detail-content { order: 1; }
+        .reverse .detail-visual { order: 2; margin-bottom: 2rem; }
         
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #ffd700;
-        }
+        .detail-visual { margin-top: 3rem; }
         
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
+        .maintenance-card { grid-template-columns: 1fr; }
+        .maint-visual { height: 300px; }
+        .maint-content { padding: 3rem 2rem; }
         
-        .breadcrumb {
-            margin-top: 1rem;
-        }
+        .industry-grid { grid-template-columns: 1fr 1fr; }
         
-        .breadcrumb a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-        }
-        
-        .breadcrumb span {
-            margin: 0 0.5rem;
-            opacity: 0.6;
-        }
-        
-        .services-overview {
-            padding: 6rem 0;
-        }
-        
-        .overview-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-        }
-        
-        .overview-content h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 1rem;
-        }
-        
-        .overview-content p {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.7;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border-top: 4px solid #007bff;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card > p {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-        
-        .service-card ul {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .service-card li {
-            color: #555;
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .service-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #28a745;
-            font-weight: bold;
-        }
-        
-        .service-link {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        
-        .service-link:hover {
-            color: #0056b3;
-        }
-        
-        .service-process {
-            padding: 6rem 0;
-            background: #f8f9fa;
-        }
-        
-        .process-timeline {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .process-step {
-            display: flex;
-            align-items: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .process-step:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-        
-        .process-step:nth-child(even) .step-content {
-            text-align: right;
-        }
-        
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            font-weight: bold;
-            flex-shrink: 0;
-            margin: 0 2rem;
-        }
-        
-        .step-content {
-            flex: 1;
-        }
-        
-        .step-content h3 {
-            font-size: 1.3rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-        
-        .step-content p {
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .industry-expertise {
-            padding: 6rem 0;
-        }
-        
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .expertise-item {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .expertise-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .expertise-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-            margin: 0 auto 1.5rem;
-        }
-        
-        .expertise-item h3 {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-        
-        .expertise-item > p {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-        
-        .expertise-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-        }
-        
-        .expertise-features span {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .service-detail {
-            padding: 6rem 0;
-            background: #f8f9fa;
-        }
-        
-        .detail-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .detail-text h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 1rem;
-        }
-        
-        .detail-text > p {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-        
-        .detail-features,
-        .detail-benefits {
-            margin-bottom: 2rem;
-        }
-        
-        .detail-features h3,
-        .detail-benefits h3 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-        
-        .detail-features ul,
-        .detail-benefits ul {
-            list-style: none;
-        }
-        
-        .detail-features li,
-        .detail-benefits li {
-            color: #555;
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .detail-features li::before,
-        .detail-benefits li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #007bff;
-            font-weight: bold;
-        }
-        
-        .visual-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 15px;
-            display: flex;
+        .cta-box-modern {
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
             text-align: center;
-        }
-        
-        .visual-placeholder i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-        
-        .visual-placeholder p {
-            font-size: 1.5rem;
-            margin: 0;
-        }
-        
-        .certifications-standards {
-            padding: 6rem 0;
-        }
-        
-        .standards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            padding: 3rem 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .service-hero-creative { height: auto; padding: 6rem 0; text-align: center; }
+        .hero-bg-parallax { height: 100%; }
+        .hero-overlay-gradient {
+            background: rgba(26,26,46,0.85);
         }
         
-        .standard-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+        .hero-content-modern h1 { font-size: 2.5rem; }
+        .hero-actions { justify-content: center; flex-direction: column; }
         
-        .standard-item:hover {
-            transform: translateY(-3px);
-        }
+        .grid-layout-3 { grid-template-columns: 1fr; }
+        .services-nav-grid { margin-top: 0; padding-top: 4rem; }
         
-        .standard-logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #007bff;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border: 2px solid #007bff;
-            border-radius: 10px;
-            display: inline-block;
-        }
+        .detail-checklist li { justify-content: center; text-align: left; }
+        .feature-grid-mini { text-align: left; }
         
-        .standard-item h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-        
-        .standard-item p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .support-maintenance {
-            padding: 6rem 0;
-            background: #f8f9fa;
-        }
-        
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .support-item {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .support-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #28a745, #20c997);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .support-item h3 {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-        
-        .support-item > p {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-        
-        .support-item ul {
-            list-style: none;
-        }
-        
-        .support-item li {
-            color: #555;
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .support-item li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #28a745;
-            font-weight: bold;
-        }
-        
-        .cta-section {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: white;
-            text-align: center;
-        }
-        
-        .cta-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .cta-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .cta-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        @media (max-width: 768px) {
-            .detail-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .process-step {
-                flex-direction: column !important;
-                text-align: center;
-            }
-            
-            .process-step:nth-child(even) .step-content {
-                text-align: center;
-            }
-            
-            .step-number {
-                margin: 0 0 1rem 0;
-            }
-            
-            .standards-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-            
-            .cta-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
-</body>
-</html>
+        .industry-grid { grid-template-columns: 1fr; }
+    }
+</style>

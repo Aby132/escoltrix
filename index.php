@@ -1,6 +1,7 @@
 <?php 
 $page_title = "Escoltrix - Lightning Protection Solutions";
 $page_description = "Escoltrix manufactures lightning protection, surge protection and grounding systems. Cutting Edge Solution for a Modern Facility.";
+include 'includes/db_connect.php';
 include 'includes/header.php'; 
 ?>
 
@@ -386,7 +387,7 @@ include 'includes/header.php';
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                transition: transform 0.5s ease;
+                transition: transform 0.3s ease;
             }
 
             #armour-rings-redux .ar-image-card:hover .ar-feature-img {
@@ -945,78 +946,48 @@ include 'includes/header.php';
                     
                     <div class="news-scroll-container">
                         <div class="news-list-modern news-scroll-content">
-                            <div class="news-item-modern">
-                                <div class="news-date-modern">
-                                    <span class="date-day">15</span>
-                                    <span class="date-month">JAN</span>
-                                </div>
-                                <div class="news-content-modern">
-                                    <h4>New Lightning Protection Standards Released</h4>
-                                    <p>This is a trial news item to test the news section functionality and display.</p>
-                                    <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
+                            <?php
+                            $news_query = "SELECT * FROM news ORDER BY news_date DESC LIMIT 5";
+                            $news_result = $conn->query($news_query);
+                            $news_items = [];
+                            if ($news_result->num_rows > 0) {
+                                while($row = $news_result->fetch_assoc()) {
+                                    $news_items[] = $row;
+                                }
+                            }
                             
-                            <div class="news-item-modern">
-                                <div class="news-date-modern">
-                                    <span class="date-day">10</span>
-                                    <span class="date-month">JAN</span>
+                            // Function to render news item
+                            function render_news_item($item) {
+                                $dateObj = DateTime::createFromFormat('Y-m-d', $item['news_date']);
+                                $day = $dateObj->format('d');
+                                $month = strtoupper($dateObj->format('M'));
+                                ?>
+                                <div class="news-item-modern">
+                                    <div class="news-date-modern">
+                                        <span class="date-day"><?php echo $day; ?></span>
+                                        <span class="date-month"><?php echo $month; ?></span>
+                                    </div>
+                                    <div class="news-content-modern">
+                                        <h4><?php echo htmlspecialchars($item['title']); ?></h4>
+                                        <p><?php echo nl2br(htmlspecialchars($item['content'])); ?></p>
+                                    </div>
                                 </div>
-                                <div class="news-content-modern">
-                                    <h4>Armour Rings Technology Certification</h4>
-                                    <p>Sample content for testing purposes - this will be replaced with actual news updates.</p>
-                                    <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            
-                            <div class="news-item-modern">
-                                <div class="news-date-modern">
-                                    <span class="date-day">05</span>
-                                    <span class="date-month">JAN</span>
-                                </div>
-                                <div class="news-content-modern">
-                                    <h4>Global Expansion Announcement</h4>
-                                    <p>Trial announcement: Testing the news ticker scroll functionality and layout design.</p>
-                                    <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            
-                            <div class="news-item-modern">
-                                <div class="news-date-modern">
-                                    <span class="date-day">28</span>
-                                    <span class="date-month">DEC</span>
-                                </div>
-                                <div class="news-content-modern">
-                                    <h4>Industry Safety Achievement Award</h4>
-                                    <p>Placeholder content for demonstration purposes - actual news will be added later.</p>
-                                    <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            
-                            <!-- Duplicate items for seamless loop -->
-                            <div class="news-item-modern">
-                                <div class="news-date-modern">
-                                    <span class="date-day">15</span>
-                                    <span class="date-month">JAN</span>
-                                </div>
-                                <div class="news-content-modern">
-                                    <h4>New Lightning Protection Standards Released</h4>
-                                    <p>This is a trial news item to test the news section functionality and display.</p>
-                                    <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            
-                            <div class="news-item-modern">
-                                <div class="news-date-modern">
-                                    <span class="date-day">10</span>
-                                    <span class="date-month">JAN</span>
-                                </div>
-                                <div class="news-content-modern">
-                                    <h4>Armour Rings Technology Certification</h4>
-                                    <p>Sample content for testing purposes - this will be replaced with actual news updates.</p>
-                                    <a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
+                                <?php
+                            }
+
+                            // Render items twice for seamless loop if there are items
+                            if (!empty($news_items)) {
+                                foreach ($news_items as $item) {
+                                    render_news_item($item);
+                                }
+                                // Repeat for infinite scroll effect
+                                foreach ($news_items as $item) {
+                                    render_news_item($item);
+                                }
+                            } else {
+                                echo '<p style="color: #666; padding: 1rem;">No news updates available at the moment.</p>';
+                            }
+                            ?>
                         </div>
                     </div>
                     
@@ -1298,105 +1269,207 @@ include 'includes/header.php';
     </section>
 
     <!-- Industries Section Redesigned -->
-    <section id="industries-redux" class="section-redux" style="background-color: #f8fafc;">
+    <section id="industries-redux" class="section-redux section-industries-bg">
         <style>
+            .section-industries-bg {
+                background-color: #f8fafc;
+                background-image: 
+                    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.03) 0px, transparent 50%),
+                    radial-gradient(at 100% 100%, rgba(255, 107, 53, 0.03) 0px, transparent 50%);
+                position: relative;
+            }
+
             .industries-grid-redux {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 1.5rem;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+                padding-bottom: 2rem;
             }
 
-            .industry-card-redux {
+            .industry-card-modern {
                 background: white;
-                padding: 2rem;
-                border-radius: 12px;
+                border-radius: 20px;
+                padding: 2.5rem 2rem;
+                position: relative;
+                overflow: hidden;
                 border: 1px solid #e2e8f0;
-                transition: all 0.3s ease;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 1rem;
+                align-items: flex-start;
+                height: 100%;
+            }
+            
+            /* Gradient Border Reveal on Hover */
+            .industry-card-modern::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 20px;
+                padding: 2px;
+                background: linear-gradient(135deg, #2563eb, #ff6b35);
+                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+                pointer-events: none;
             }
 
-            .industry-card-redux:hover {
-                transform: translateY(-5px);
-                border-color: #3b82f6;
-                box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+            .industry-card-modern:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            }
+            
+            .industry-card-modern:hover::before {
+                opacity: 1;
             }
 
-            .industry-icon-redux {
+            .industry-icon-wrapper {
                 width: 64px;
                 height: 64px;
-                background: rgba(59, 130, 246, 0.1);
-                border-radius: 50%;
+                border-radius: 16px;
+                background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+                border: 1px solid #e2e8f0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 1.75rem;
-                color: #2563eb;
-                transition: all 0.3s ease;
-                margin-bottom: 0.5rem;
+                font-size: 1.5rem;
+                color: #64748b;
+                margin-bottom: 1.5rem;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                z-index: 1;
             }
 
-            .industry-card-redux:hover .industry-icon-redux {
-                background: #2563eb;
+            .industry-card-modern:hover .industry-icon-wrapper {
+                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                border-color: transparent;
                 color: white;
-                transform: rotateY(180deg);
+                transform: rotate(-10deg) scale(1.1);
+                box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
             }
 
-            .industry-title-redux {
-                font-size: 1.1rem;
-                font-weight: 600;
-                color: #334155;
-                margin: 0;
+            .industry-title-modern {
+                font-size: 1.25rem;
+                font-weight: 800;
+                color: #1e293b;
+                margin-bottom: 0.75rem;
+                line-height: 1.3;
+                transition: color 0.3s ease;
+            }
+
+            .industry-card-modern:hover .industry-title-modern {
+                color: #2563eb;
+            }
+            
+            .industry-desc-modern {
+                font-size: 0.95rem;
+                color: #64748b;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+            }
+
+            .industry-link-arrow {
+                margin-top: auto;
+                color: #2563eb;
+                font-weight: 700;
+                font-size: 0.85rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                opacity: 0.7;
+                transform: translateX(0);
+                transition: all 0.3s ease;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .industry-link-arrow i {
+                transition: transform 0.3s ease;
+            }
+
+            .industry-card-modern:hover .industry-link-arrow {
+                opacity: 1;
+                transform: translateX(4px);
+            }
+            .industry-card-modern:hover .industry-link-arrow i {
+                transform: translateX(4px);
             }
         </style>
+
         <div class="container-redux">
             <div class="section-header-redux" data-aos="fade-up">
-                <h2 class="section-title-redux">Industries Serviced</h2>
+                <span style="color: #ff6b35; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; display: block; margin-bottom: 1rem; background: rgba(255, 107, 53, 0.1); display: inline-block; padding: 4px 12px; border-radius: 20px;">Sectors Serviced</span>
+                <h2 class="section-title-redux">Protecting Critical Infrastructure</h2>
+                <p class="section-subtitle-redux">Specialized engineering solutions tailored to the unique risks and compliance standards of major industrial sectors.</p>
                 <div class="divider-redux"></div>
             </div>
 
             <div class="industries-grid-redux">
-                <div class="industry-card-redux" data-aos="fade-up" data-aos-delay="100">
-                    <div class="industry-icon-redux"><i class="fas fa-oil-can"></i></div> <!-- Adjusted Icon -->
-                    <h3 class="industry-title-redux">Oil & Gas / Petrochemical</h3>
+                <!-- Industry 1 -->
+                <div class="industry-card-modern" data-aos="fade-up" data-aos-delay="100">
+                    <div class="industry-icon-wrapper"><i class="fas fa-oil-can"></i></div>
+                    <h3 class="industry-title-modern">Oil & Gas</h3>
+                    <p class="industry-desc-modern">Explosion-proof grounding and lightning protection systems for refineries, rigs, and pipelines in hazardous zones.</p>
+
                 </div>
                 
-                <div class="industry-card-redux" data-aos="fade-up" data-aos-delay="200">
-                    <div class="industry-icon-redux"><i class="fas fa-satellite-dish"></i></div>
-                    <h3 class="industry-title-redux">Telecom & ICT</h3>
+                <!-- Industry 2 -->
+                <div class="industry-card-modern" data-aos="fade-up" data-aos-delay="200">
+                    <div class="industry-icon-wrapper"><i class="fas fa-satellite-dish"></i></div>
+                    <h3 class="industry-title-modern">Telecom & ICT</h3>
+                    <p class="industry-desc-modern">Ensuring uptime for cell towers, data centers, and switching stations with precision surge suppression.</p>
+
                 </div>
                 
-                <div class="industry-card-redux" data-aos="fade-up" data-aos-delay="300">
-                    <div class="industry-icon-redux"><i class="fas fa-bolt"></i></div>
-                    <h3 class="industry-title-redux">Utilities / Energy</h3>
+                <!-- Industry 3 -->
+                <div class="industry-card-modern" data-aos="fade-up" data-aos-delay="300">
+                    <div class="industry-icon-wrapper"><i class="fas fa-bolt"></i></div>
+                    <h3 class="industry-title-modern">Utilities & Energy</h3>
+                    <p class="industry-desc-modern">Grid resilience solutions protecting generation plants, substations, and transmission infrastructure.</p>
+
                 </div>
                 
-                <div class="industry-card-redux" data-aos="fade-up" data-aos-delay="400">
-                    <div class="industry-icon-redux"><i class="fas fa-server"></i></div>
-                    <h3 class="industry-title-redux">Data Centers</h3>
+                <!-- Industry 4 -->
+                <div class="industry-card-modern" data-aos="fade-up" data-aos-delay="400">
+                    <div class="industry-icon-wrapper"><i class="fas fa-server"></i></div>
+                    <h3 class="industry-title-modern">Data Centers</h3>
+                    <p class="industry-desc-modern">Zero-tolerance protection for server halls and critical IT equipment against power transients.</p>
+
                 </div>
                 
-                <div class="industry-card-redux" data-aos="fade-up" data-aos-delay="500">
-                    <div class="industry-icon-redux"><i class="fas fa-building"></i></div>
-                    <h3 class="industry-title-redux">Commercial Facilities</h3>
+                <!-- Industry 5 -->
+                <div class="industry-card-modern" data-aos="fade-up" data-aos-delay="500">
+                    <div class="industry-icon-wrapper"><i class="fas fa-building"></i></div>
+                    <h3 class="industry-title-modern">Commercial</h3>
+                    <p class="industry-desc-modern">Safety compliance and asset protection for office towers, shopping malls, and public venues.</p>
+
                 </div>
                 
-                <div class="industry-card-redux" data-aos="fade-up" data-aos-delay="600">
-                    <div class="industry-icon-redux"><i class="fas fa-industry"></i></div>
-                    <h3 class="industry-title-redux">Process Manufacturing</h3>
+                <!-- Industry 6 -->
+                <div class="industry-card-modern" data-aos="fade-up" data-aos-delay="600">
+                    <div class="industry-icon-wrapper"><i class="fas fa-industry"></i></div>
+                    <h3 class="industry-title-modern">Manufacturing</h3>
+                    <p class="industry-desc-modern">Safeguarding automated production lines, PLCs, and robotics from damaging electrical surges.</p>
+
                 </div>
                 
-                <div class="industry-card-redux" data-aos="fade-up" data-aos-delay="700">
-                    <div class="industry-icon-redux"><i class="fas fa-shield-alt"></i></div>
-                    <h3 class="industry-title-redux">Defense & Military</h3>
+                <!-- Industry 7 -->
+                <div class="industry-card-modern" data-aos="fade-up" data-aos-delay="700">
+                    <div class="industry-icon-wrapper"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="industry-title-modern">Defense & Military</h3>
+                    <p class="industry-desc-modern">Mission-critical shielding and grounding for sensitive electronics, radar, and command bases.</p>
+
                 </div>
                 
-                <div class="industry-card-redux" data-aos="fade-up" data-aos-delay="800">
-                    <div class="industry-icon-redux"><i class="fas fa-wrench"></i></div>
-                    <h3 class="industry-title-redux">Heavy Industrial</h3>
+                <!-- Industry 8 -->
+                <div class="industry-card-modern" data-aos="fade-up" data-aos-delay="800">
+                    <div class="industry-icon-wrapper"><i class="fas fa-wrench"></i></div>
+                    <h3 class="industry-title-modern">Heavy Industrial</h3>
+                    <p class="industry-desc-modern">High-durability grounding and protection for mining operations, cement plants, and steelworks.</p>
+
                 </div>
             </div>
         </div>
@@ -1447,132 +1520,254 @@ include 'includes/header.php';
     </section>
 
     <!-- Contact Section Redesigned -->
-    <section id="contact-redux" class="section-redux">
+    <!-- Contact Section Redesigned with Premium Image Background -->
+    <section id="contact-redux" class="section-redux-contact">
         <style>
-            /* Contact Specific Scooped CSS */
-            #contact-redux {
-                background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            /* Contact Section Redux Premium Styles */
+            .section-redux-contact {
+                position: relative;
+                padding: 8rem 0;
+                background: #0f172a; /* Dark fallback */
+                overflow: hidden;
             }
 
-            .contact-wrapper-redux {
+            .contact-bg-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+            }
+
+            .contact-bg-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.3;
+                filter: contrast(1.1) saturate(1.1);
+            }
+
+            .contact-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+                z-index: 1;
+            }
+
+            .container-redux-contact {
+                position: relative;
+                z-index: 2;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .contact-layout-split {
                 display: grid;
-                grid-template-columns: 1fr 1.5fr;
-                gap: 4rem;
-                align-items: start;
-                background: white;
-                border-radius: 24px;
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-                padding: 3rem;
-                border: 1px solid #e2e8f0;
+                grid-template-columns: 1fr 1.2fr;
+                gap: 5rem;
+                align-items: center;
             }
 
-            .contact-info-panel h3 {
-                font-size: 2rem;
+            /* Info Side Styling */
+            .contact-info-side {
+                color: white;
+            }
+
+            .contact-info-side h2 {
+                font-size: 3.5rem;
                 font-weight: 800;
-                color: #1e293b;
-                margin-bottom: 1rem;
+                letter-spacing: -1px;
+                margin-bottom: 1.5rem;
+                line-height: 1.1;
+                background: linear-gradient(to right, #ffffff, #94a3b8);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
 
-            .contact-info-panel p {
-                color: #64748b;
-                line-height: 1.6;
-                margin-bottom: 2rem;
-                font-size: 1.05rem;
+            .contact-info-side > p {
+                font-size: 1.25rem;
+                color: #cbd5e1;
+                line-height: 1.7;
+                margin-bottom: 3rem;
+                font-weight: 300;
             }
 
-            .info-item-redux {
+            .info-card-redux {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 2rem;
+                border-radius: 20px;
                 display: flex;
                 align-items: flex-start;
-                gap: 1rem;
-                margin-bottom: 1.5rem;
+                gap: 1.5rem;
+                transition: transform 0.3s ease;
             }
 
-            .info-icon-circle {
-                width: 48px;
-                height: 48px;
-                background: rgba(37, 99, 235, 0.1);
-                color: #2563eb;
-                border-radius: 12px;
+            .info-card-redux:hover {
+                transform: translateY(-5px);
+                background: rgba(255, 255, 255, 0.08);
+            }
+
+            .info-icon-glow {
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(135deg, #2563eb, #1e40af);
+                border-radius: 15px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 1.25rem;
+                font-size: 1.5rem;
+                color: white;
+                box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.5);
                 flex-shrink: 0;
             }
 
-            .info-text-redux h4 {
+            .info-content-redux h4 {
+                font-size: 1.25rem;
                 font-weight: 700;
-                color: #1e293b;
-                margin: 0 0 0.25rem 0;
+                margin: 0 0 0.5rem 0;
+                color: white;
+            }
+
+            .info-content-redux span {
+                color: #94a3b8;
                 font-size: 1rem;
             }
 
-            .info-text-redux span {
-                color: #64748b;
-                font-size: 0.95rem;
+            /* Form Side Styling */
+            .contact-form-wrapper {
+                background: white;
+                padding: 3rem;
+                border-radius: 24px;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                position: relative;
+                overflow: hidden;
             }
 
-            /* Form Styles */
+            .contact-form-wrapper::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 6px;
+                background: linear-gradient(90deg, #2563eb, #ff6b35);
+            }
+
+            .form-header-redux {
+                margin-bottom: 2rem;
+            }
+
+            .form-header-redux h3 {
+                font-size: 1.8rem;
+                font-weight: 800;
+                color: #1e293b;
+                margin-bottom: 0.5rem;
+            }
+
+            .form-header-redux p {
+                color: #64748b;
+            }
+
             .form-grid-redux {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 1.5rem;
+                gap: 1.25rem;
             }
 
             .form-group-redux {
-                margin-bottom: 1.5rem;
+                margin-bottom: 0;
             }
 
             .form-group-redux.full-width {
                 grid-column: span 2;
-                margin-bottom: 0;
             }
 
-            .input-redux, .textarea-redux, .select-redux {
+            .input-redux, .select-redux, .textarea-redux {
                 width: 100%;
                 padding: 1rem 1.25rem;
-                border: 1px solid #e2e8f0;
-                border-radius: 10px;
+                border: 2px solid #e2e8f0;
+                border-radius: 12px;
                 background: #f8fafc;
-                font-family: inherit;
-                font-size: 1rem;
-                color: #1e293b;
+                font-size: 0.95rem;
+                color: #334155;
+                font-weight: 500;
                 transition: all 0.3s ease;
+                font-family: inherit;
             }
 
-            .input-redux:focus, .textarea-redux:focus, .select-redux:focus {
+            .input-redux:focus, .select-redux:focus, .textarea-redux:focus {
                 outline: none;
                 background: white;
                 border-color: #2563eb;
-                box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+                box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            }
+
+            .input-redux::placeholder, .textarea-redux::placeholder {
+                color: #94a3b8;
+                font-weight: 400;
             }
 
             .submit-btn-redux {
-                background: linear-gradient(135deg, #2563eb, #1e40af);
+                width: 100%;
+                padding: 1.25rem;
+                background: #1e293b;
                 color: white;
                 border: none;
-                padding: 1rem 2.5rem;
-                font-size: 1rem;
-                font-weight: 600;
-                border-radius: 50px;
+                border-radius: 12px;
+                font-size: 1.1rem;
+                font-weight: 700;
                 cursor: pointer;
-                transition: all 0.3s ease;
-                display: inline-flex;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                display: flex;
                 align-items: center;
-                gap: 0.75rem;
-                box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 2rem;
             }
 
             .submit-btn-redux:hover {
+                background: #2563eb;
                 transform: translateY(-2px);
-                box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.4);
-                background: linear-gradient(135deg, #1e40af, #2563eb);
+                box-shadow: 0 15px 30px -10px rgba(37, 99, 235, 0.5);
             }
 
-            @media (max-width: 991px) {
-                .contact-wrapper-redux {
+            .submit-btn-redux i {
+                transition: transform 0.3s ease;
+            }
+
+            .submit-btn-redux:hover i {
+                transform: translateX(5px) scale(1.1);
+            }
+
+            @media (max-width: 1024px) {
+                .contact-layout-split {
                     grid-template-columns: 1fr;
-                    padding: 2rem;
+                    gap: 4rem;
+                }
+                .contact-info-side {
+                    text-align: center;
+                }
+                .contact-info-side > p {
+                    margin: 0 auto 3rem;
+                    max-width: 600px;
+                }
+                .info-card-redux {
+                    max-width: 500px;
+                    margin: 0 auto;
+                    text-align: left;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .contact-info-side h2 {
+                    font-size: 2.5rem;
                 }
                 .form-grid-redux {
                     grid-template-columns: 1fr;
@@ -1580,49 +1775,59 @@ include 'includes/header.php';
                 .form-group-redux.full-width {
                     grid-column: span 1;
                 }
+                .contact-form-wrapper {
+                    padding: 2rem;
+                }
             }
         </style>
-        
-        <div class="container-redux">
-            <div class="section-header-redux" data-aos="fade-up">
-                <h2 class="section-title-redux">Start Your Project</h2>
-                <div class="divider-redux"></div>
-            </div>
 
-            <div class="contact-wrapper-redux" data-aos="fade-up" data-aos-delay="100">
-                <!-- Info Side -->
-                <div class="contact-info-panel">
-                    <h3>Get in Touch</h3>
-                    <p>Have a project in mind? Our engineering team is ready to assist with layouts, risk assessments, and technical specifications.</p>
+        <div class="contact-bg-image">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Modern Building">
+        </div>
+        <div class="contact-overlay"></div>
+
+        <div class="container-redux-contact">
+            <div class="contact-layout-split">
+                <!-- Left: Content & Visuals -->
+                <div class="contact-info-side" data-aos="fade-right">
+                    <h2>Start Your <br>Project</h2>
+                    <p>Ready to engineer safety? Our team is on standby to provide rapid layouts, comprehensive risk assessments, and technical specifications for your next big project.</p>
                     
-                    <div class="info-item-redux">
-                        <div class="info-icon-circle"><i class="fas fa-envelope"></i></div>
-                        <div class="info-text-redux">
-                            <h4>Email Us</h4>
+                    <div class="info-card-redux" data-aos="fade-up" data-aos-delay="200">
+                        <div class="info-icon-glow">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <div class="info-content-redux">
+                            <h4>Email Us Directly</h4>
                             <span>info@escoltrix.com</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Form Side -->
-                <div class="contact-form-panel">
+                <!-- Right: Form -->
+                <div class="contact-form-wrapper" data-aos="fade-left">
+                    <div class="form-header-redux">
+                        <h3>Get in Touch</h3>
+                        <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+                    </div>
+                    
                     <form class="contact-form-redux" id="contactForm" action="contact_handler.php" method="POST">
                         <div class="form-grid-redux">
                             <div class="form-group-redux">
                                 <input type="text" id="name" name="name" class="input-redux" placeholder="Your Name *" required>
                             </div>
                             <div class="form-group-redux">
-                                <input type="text" id="company" name="company" class="input-redux" placeholder="Company Name">
+                                <input type="text" id="company" name="company" class="input-redux" placeholder="Company">
                             </div>
                             <div class="form-group-redux">
-                                <input type="email" id="email" name="email" class="input-redux" placeholder="Your Email *" required>
+                                <input type="email" id="email" name="email" class="input-redux" placeholder="Email Address *" required>
                             </div>
                             <div class="form-group-redux">
                                 <input type="tel" id="mobile" name="mobile" class="input-redux" placeholder="Phone Number *" required>
                             </div>
                             <div class="form-group-redux full-width">
                                 <select id="subject" name="subject" class="select-redux" required>
-                                    <option value="">Select Subject *</option>
+                                    <option value="" disabled selected>Select a Subject *</option>
                                     <option value="lightning-protection">Lightning Protection</option>
                                     <option value="surge-protection">Surge Protection</option>
                                     <option value="grounding-system">Grounding System</option>
@@ -1633,11 +1838,9 @@ include 'includes/header.php';
                                 <textarea id="message" name="message" class="textarea-redux" rows="4" placeholder="How can we help you? *" required></textarea>
                             </div>
                         </div>
-                        <div style="margin-top: 2rem; text-align: right;">
-                            <button type="submit" class="submit-btn-redux">
-                                Send Message <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
+                        <button type="submit" class="submit-btn-redux">
+                            Send Message <i class="fas fa-arrow-right"></i>
+                        </button>
                     </form>
                 </div>
             </div>

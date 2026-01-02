@@ -89,13 +89,13 @@ include 'includes/header.php';
                 
                 <div class="story-visual" data-aos="fade-left">
                     <div class="primary-img-wrap">
-                        <img src="Images\im3.jpeg" alt="Power Infrastructure">
+                        <img src="Images/lightning_infrastructure.png" alt="Power Infrastructure">
                         <div class="img-overlay-badge">
                             <span>30+ Years</span>
                         </div>
                     </div>
                     <div class="accent-img-wrap">
-                        <img src="Images\im4.jpg" alt="Lightning Storm">
+                        <img src="Images/lightning_storm.png" alt="Lightning Storm">
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@ include 'includes/header.php';
                         
                         <h3>Delivering globally trusted quality at competitive cost</h3>
                         <div>
-                            <img src="Images\im7.jpg" alt="Modern Facility">
+                            <img src="Images/modern_facility_protection.png" alt="Modern Facility">
                         </div>
                     </div>
                 </div>
@@ -127,11 +127,11 @@ include 'includes/header.php';
                     
                     <div class="stats-inline">
                         <div class="stat-mini">
-                            <h3 data-counter="50000+">0</h3>
+                            <h3>50000+</h3>
                             <p>Projects</p>
                         </div>
                         <div class="stat-mini">
-                            <h3 data-counter="10000+">0</h3>
+                            <h3>10000+</h3>
                             <p>Clients</p>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ include 'includes/header.php';
             <!-- Commitment Banner with Image -->
             <div class="commitment-banner" data-aos="fade-up">
                 <div class="commitment-bg-image">
-                    <img src="Images\im8.jpg" alt="Lightning Protection System">
+                    <img src="Images/lightning_protection_roof.png" alt="Lightning Protection System">
                     <div class="commitment-overlay"></div>
                 </div>
                 <div class="commitment-content">
@@ -199,7 +199,7 @@ include 'includes/header.php';
                 </div>
                 
                 <div class="mv-image-stack" data-aos="fade-left">
-                    <img src="Images\im8.jpg" alt="Lightning Protection">
+                    <img src="Images/lightning_protection_roof.png" alt="Lightning Protection">
                     <div class="image-caption">
                         <i class="fas fa-bolt"></i>
                         <span>Protecting What Matters</span>
@@ -211,10 +211,10 @@ include 'includes/header.php';
             <div class="vision-creative-block" data-aos="fade-up">
                 <div class="vision-image-collage">
                     <div class="collage-img img-1">
-                        <img src="Images\im9.jpg" alt="Industrial Tower">
+                        <img src="Images/industrial_tower_storm.png" alt="Industrial Tower">
                     </div>
                     <div class="collage-img img-2">
-                        <img src="Images\im10.jpg" alt="Storm Clouds">
+                        <img src="Images/lightning_storm.png" alt="Storm Clouds">
                     </div>
                 </div>
                 
@@ -314,13 +314,7 @@ include 'includes/header.php';
                     <div class="csr-main-img">
                         <img src="https://images.pexels.com/photos/8926665/pexels-photo-8926665.jpeg" alt="Education Seminar">
                     </div>
-                    <div class="csr-floating-card">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div>
-                            <h4>5000+</h4>
-                            <p>Students Educated</p>
-                        </div>
-                    </div>
+
                 </div>
                 
                 <div class="csr-content-side" data-aos="fade-left">
@@ -621,14 +615,13 @@ include 'includes/header.php';
         }
         
         .container-fluid {
-            overflow-x: hidden;
+            /* overflow-x: hidden; Removed to prevent clipping */
         }
         
         /* ===== HERO SECTION ===== */
         .creative-hero-about {
             padding: 100px 0 80px;
             background: #f8f9fa;
-            overflow: hidden;
             position: relative;
         }
         
@@ -636,7 +629,7 @@ include 'includes/header.php';
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
-            overflow-x: hidden;
+            /* overflow-x: hidden; Removed */
             position: relative;
         }
         
@@ -2353,6 +2346,153 @@ include 'includes/header.php';
             z-index: 1;
         }
         
+        /* ===== CSR SECTION CREATIVE ===== */
+        .csr-section-creative {
+            padding: 6rem 0;
+            background: #f0f2f5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .csr-custom-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .csr-visual-side {
+            position: relative;
+            height: 550px;
+        }
+
+        .csr-main-img {
+            width: 90%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        .csr-main-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .csr-floating-card {
+            position: absolute;
+            bottom: 40px;
+            right: 0;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            max-width: 300px;
+            border-left: 5px solid #ff6b35;
+        }
+
+        .csr-floating-card i {
+            font-size: 2.5rem;
+            color: #ff6b35;
+            background: rgba(255, 107, 53, 0.1);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .csr-floating-card h4 {
+            font-size: 2rem;
+            color: #1a1a2e;
+            margin: 0;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .csr-floating-card p {
+            margin: 0.5rem 0 0;
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .csr-content-side .section-label {
+            color: #ff6b35;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: transparent;
+            padding: 0;
+        }
+
+        .csr-content-side h2 {
+            font-size: 3rem;
+            color: #1a1a2e;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .csr-content-side > p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .csr-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .csr-feat-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .csr-feat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .csr-icon {
+            margin-bottom: 1rem;
+        }
+
+        .csr-icon i {
+            font-size: 2rem;
+            color: #ff6b35;
+        }
+
+        .csr-feat-item h4 {
+            font-size: 1.1rem;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .csr-feat-item p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
         /* ===== CERTIFICATIONS CREATIVE ===== */
         .certifications-creative {
             padding: 6rem 0;
@@ -2592,278 +2732,138 @@ include 'includes/header.php';
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .hero-asymmetric-grid, .story-block, .mission-vision-asymmetric, .vision-creative-block, 
-            .category-block, .why-choose-layout, .cert-asymmetric-layout, .cta-asymmetric-content {
-                grid-template-columns: 1fr;
+            .category-block, .why-choose-layout, .cert-asymmetric-layout, .cta-asymmetric-content,
+            .csr-custom-layout, .values-cards-asymmetric {
+                grid-template-columns: 1fr !important;
                 gap: 3rem;
             }
             
-            .category-block.block-2 {
-                grid-template-columns: 1fr;
+            .category-block.block-2, .layout-left {
+                grid-template-columns: 1fr !important;
             }
             
-            .section-header-creative {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 2rem;
-            }
-            
-            .header-icon {
-                width: 100%;
-                height: 150px;
-            }
-            
-            .header-icon-wrapper {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .header-icon-wrapper i {
-                font-size: 3rem;
-            }
-            
-            .category-icon-wrapper {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .category-icon-wrapper i {
-                font-size: 3.5rem;
-            }
-            
-            .hero-visual-stack, .features-visual-mix {
-                height: 500px;
+            .hero-visual-stack, .features-visual-mix, .csr-visual-side {
+                height: auto;
+                min-height: 400px;
             }
             
             .main-hero-image {
                 width: 100%;
                 height: 450px;
+                position: relative;
             }
             
             .floating-hero-image {
-                width: 250px;
-                height: 200px;
+                display: none;
             }
             
-            .values-cards-asymmetric {
-                grid-template-columns: repeat(2, 1fr);
+             .accent-img-wrap {
+                display: none;
+            }
+            
+            .primary-img-wrap img {
+                 height: 400px;
+            }
+
+            .csr-floating-card {
+                position: relative;
+                right: auto;
+                bottom: auto;
+                margin-top: -50px;
+                margin-left: 20px;
+                margin-right: 20px;
+                width: auto;
+            }
+
+            .section-header-creative, .cta-actions-block {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section-header-creative {
+                gap: 2rem;
+            }
+
+            .header-icon {
+                width: 100%;
+                height: auto;
+                padding: 2rem 0;
+            }
+            
+             /* Ensure images don't overflow */
+            img {
+                max-width: 100%;
             }
         }
         
         @media (max-width: 768px) {
+            /* Reduce padding on mobile */
+            .creative-hero-about, .company-story-asymmetric, .mission-vision-creative, 
+            .product-categories-asymmetric, .why-choose-creative, .certifications-creative, 
+            .cta-asymmetric, .csr-section-creative {
+                padding: 3rem 0;
+            }
+
             .hero-text-block h1 {
                 font-size: 2.5rem;
             }
             
-            .story-content h2, .section-header-center h2, .features-stack h2, .cert-header-block h2, .cta-text-block h2, .csr-content-side h2 {
-                font-size: 2rem;
-            }
-            
             .hero-stats-mini {
+                flex-wrap: wrap;
                 gap: 1.5rem;
-            }
-            
-            .values-cards-asymmetric {
-                grid-template-columns: 1fr;
             }
             
             .cert-cards-stack {
                 grid-template-columns: 1fr;
             }
-            
-            .vision-image-collage {
-                height: 400px;
-            }
-            
-            .visual-floating {
-                display: none;
-            }
-            
-            .accent-img-wrap {
+
+             .visual-main, .visual-floating, .shape-1, .shape-2, .visual-accent-shape {
                 position: relative;
-                left: 0;
-                bottom: 0;
-                margin-top: 2rem;
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .shape-1, .shape-2 {
-                display: none;
-            }
-            
-            .header-icon {
-                width: 100%;
-                height: 120px;
-            }
-            
-            .header-icon-wrapper {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .header-icon-wrapper i {
-                font-size: 2.5rem;
-            }
-            
-            .category-visual {
-                height: 250px;
-            }
-            
-            .category-icon-wrapper {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .category-icon-wrapper i {
-                font-size: 3rem;
-            }
-            
-            .csr-floating-card {
-                position: relative;
+                top: auto;
+                left: auto;
                 right: auto;
                 bottom: auto;
-                margin-top: -30px;
-                margin-left: 20px;
-                width: calc(100% - 40px);
-            }
-        }
-        
-        /* ===== CSR SECTION ===== */
-        .csr-section-creative {
-            padding: 6rem 0;
-            background: #ffffff;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .csr-custom-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-        
-        .csr-visual-side {
-            position: relative;
-            height: 500px;
-        }
-        
-        .csr-main-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-        }
-        
-        .csr-main-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .csr-floating-card {
-            position: absolute;
-            bottom: 40px;
-            right: -30px;
-            background: white;
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border-left: 5px solid #ff6b35;
-            z-index: 2;
-        }
-        
-        .csr-floating-card i {
-            font-size: 2.5rem;
-            color: #ff6b35;
-        }
-        
-        .csr-floating-card h4 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #1a1a2e;
-            margin: 0;
-            line-height: 1;
-        }
-        
-        .csr-floating-card p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .csr-content-side h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            color: #1a1a2e;
-        }
-        
-        .csr-content-side > p {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-        
-        .csr-features {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-        
-        .csr-feat-item {
-            display: flex;
-            gap: 1.25rem;
-        }
-        
-        .csr-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 107, 53, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: #ff6b35;
-            font-size: 1.5rem;
-        }
-        
-        .csr-feat-item h4 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-        
-        .csr-feat-item p {
-            font-size: 1rem;
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .csr-btn {
-            display: inline-flex;
-            width: auto;
-        }
-        
-        @media (max-width: 1024px) {
-            .csr-custom-layout {
-                grid-template-columns: 1fr;
-            }
-            
-            .csr-visual-side {
-                height: 400px;
-            }
-            
-            .csr-floating-card {
-                right: 0;
-            }
+                width: 100%;
+                height: 300px;
+                margin-bottom: 2rem;
+             }
+             
+             .visual-floating, .shape-1, .shape-2, .visual-accent-shape {
+                 display: none;
+             }
+
+             .visual-main {
+                 height: 350px;
+             }
+
+             .features-visual-mix {
+                 height: auto;
+             }
+             
+             .collage-img.img-1 {
+                 position: relative;
+                 width: 100%;
+                 height: 300px;
+             }
+             
+             .collage-img.img-2 {
+                 display: none;
+             }
+             
+             .vision-image-collage {
+                 height: auto;
+             }
+
+             .quote-mark {
+                 font-size: 4rem;
+             }
+
+             .quote-visual-card {
+                 padding: 2rem;
+             }
+             
+             .category-block {
+                 padding: 1.5rem;
+             }
         }
     </style>

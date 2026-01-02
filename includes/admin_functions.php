@@ -9,7 +9,13 @@ function admin_start_secure_session(): void
         return;
     }
 
+    if (headers_sent()) {
+        return;
+    }
+
     $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+    
+    // Set cookie parameters only if session is not active
     session_set_cookie_params([
         'lifetime' => 0,
         'path' => '/',
@@ -18,6 +24,7 @@ function admin_start_secure_session(): void
         'httponly' => true,
         'samesite' => 'Strict'
     ]);
+    
     session_start();
 }
 

@@ -7,8 +7,8 @@
     <meta name="description" content="<?php echo isset($page_description) ? $page_description : 'Escoltrix manufactures lightning protection, surge protection and grounding systems. Cutting Edge Solution for a Modern Facility.'; ?>">
     
     <!-- CSS Files -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/responsive.css?v=<?php echo time(); ?>">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -232,7 +232,8 @@
             transition: transform 0.3s ease;
         }
 
-        .dropdown:hover .dropdown-icon {
+        .dropdown:hover .dropdown-icon,
+        .dropdown.active .dropdown-icon {
             transform: rotate(180deg);
         }
 
@@ -318,6 +319,9 @@
 
         /* Mobile Responsive */
         @media (max-width: 991px) {
+            .header {
+                background: var(--white) !important;
+            }
 
             .nav-menu {
                 position: fixed;
@@ -354,23 +358,25 @@
             }
 
             .dropdown-menu {
-                position: static;
-                transform: none;
-                opacity: 1;
-                visibility: visible;
-                box-shadow: none;
-                border: 1px solid rgba(0,0,0,0.05);
-                margin: 0.5rem 0;
+                position: static !important;
+                transform: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                box-shadow: none !important;
+                border: 1px solid rgba(0,0,0,0.05) !important;
+                margin: 0.5rem 0 !important;
                 display: none;
-                width: 100%;
-                padding: 0.5rem;
+                width: 100% !important;
+                padding: 0.5rem !important;
+                left: 0 !important;
+                top: auto !important;
+                background: #f9fafb !important;
             }
 
 
             .dropdown-menu.active,
-            .dropdown.active .dropdown-menu,
-            .dropdown:hover .dropdown-menu { /* Fallback */
-                display: block;
+            .dropdown.active .dropdown-menu {
+                display: block !important;
             }
 
             .hamburger {
@@ -426,10 +432,10 @@
     <header class="header">
         <nav class="navbar">
             <div class="container">
-                <div class="nav-brand">
+                <a href="index.php" class="nav-brand">
                     <img src="Images/logo.png" alt="Escoltrix Logo" class="logo">
                     <span class="brand-name-nav">Escoltrix</span>
-                </div>
+                </a>
                 
                 <!-- Desktop Navigation Menu -->
                 <div class="nav-menu" id="nav-menu">

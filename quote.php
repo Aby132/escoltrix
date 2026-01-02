@@ -312,63 +312,127 @@ include 'includes/header.php';
 
     </script>
 
-    <!-- Quote Page CSS -->
+    /* ===== REDUX PREMIUM QUOTE DESIGN ===== */
     <style>
+        /* Global & Variables */
+        :root {
+            --primary-blue: #2563eb;
+            --primary-dark: #1e293b;
+            --secondary-orange: #ff6b35;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --border-color: #e2e8f0;
+            --card-radius: 20px;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Improved Page Header */
         .page-header {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 140px 0 100px;
+            background: radial-gradient(circle at 10% 20%, #1e293b 0%, #0f172a 90%);
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            pointer-events: none;
         }
         
         .page-header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
             margin-bottom: 1rem;
-            color: #ffd700;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
         }
         
         .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
         }
-        
+
         .breadcrumb {
-            margin-top: 1rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
         }
-        
+
         .breadcrumb a {
-            color: rgba(255, 255, 255, 0.8);
+            color: #cbd5e1;
             text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
-        
+
+        .breadcrumb a:hover {
+            color: #ffffff;
+        }
+
         .breadcrumb span {
-            margin: 0 0.5rem;
-            opacity: 0.6;
+            color: #64748b;
         }
         
         /* Quote Request Section */
         .quote-request-section {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 5rem 0 3rem;
+            background: var(--bg-light);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.03) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 107, 53, 0.03) 0px, transparent 50%);
         }
         
         .quote-request-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .quote-request-header h2 {
             font-size: 2.5rem;
-            color: #1a1a2e;
+            color: var(--primary-dark);
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
         
         .quote-request-header p {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.15rem;
+            color: var(--text-light);
             line-height: 1.6;
         }
         
@@ -380,251 +444,88 @@ include 'includes/header.php';
             margin: 0 auto;
         }
         
-        .quote-section {
-            padding: 4rem 0;
-        }
-        
-        .quote-form-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        /* Quote Info */
-        .quote-info {
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .quote-header h2 {
-            font-size: 2.2rem;
-            color: #1a1a2e;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .quote-header p {
-            color: #666;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        
-        .quote-benefits {
-            margin-bottom: 2rem;
-            flex: 1;
-        }
-        
         .benefit-item {
             display: flex;
-            align-items: center;
-            gap: 1.5rem;
+            align-items: flex-start;
+            gap: 1.25rem;
             padding: 2rem;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-align: left;
+            border-radius: var(--card-radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
         }
         
         .benefit-item:hover {
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(255, 215, 0, 0.02));
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            border-color: #cbd5e1;
         }
         
         .benefit-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #ff6b35, #ffd700);
-            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), #1e40af);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1a1a2e;
-            font-size: 1.5rem;
+            color: white;
+            font-size: 1.25rem;
             flex-shrink: 0;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
         }
         
         .benefit-content h4 {
-            color: #1a1a2e;
+            color: var(--primary-dark);
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .benefit-content p {
-            color: #666;
+            color: var(--text-light);
             font-size: 0.95rem;
             margin: 0;
-            line-height: 1.4;
-        }
-        
-        .contact-info-quote {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            padding: 1.5rem;
-            border-radius: 15px;
-            color: white;
-            margin-top: auto;
-        }
-        
-        .contact-info-quote h3 {
-            color: #ffd700;
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-        }
-        
-        .contact-methods-quote {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: #e0e6ed;
-        }
-        
-        .contact-item i {
-            color: #ffd700;
-            width: 20px;
-        }
-        
-        /* Contact Info Card */
-        .contact-info-card {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            padding: 3rem;
-            border-radius: 20px;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .contact-info-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-info-header h3 {
-            color: #ffd700;
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .contact-info-header p {
-            color: #e0e6ed;
-            font-size: 1rem;
             line-height: 1.5;
         }
         
-        .contact-methods {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+        /* Quote Form Section */
+        .quote-section {
+            padding: 3rem 0 6rem;
+            background: var(--bg-light);
         }
         
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-method:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateX(5px);
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #ff6b35, #ffd700);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1a1a2e;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-        
-        .contact-details h4 {
-            color: #ffd700;
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-            font-weight: 600;
-        }
-        
-        .contact-details p {
-            color: white;
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
-            font-weight: 500;
-        }
-        
-        .contact-details span {
-            color: #e0e6ed;
-            font-size: 0.85rem;
-        }
-        
-        .contact-features {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-        
-        .feature-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .feature-badge i {
-            color: #ffd700;
-            width: 16px;
-        }
-        
-        .feature-badge span {
-            color: #e0e6ed;
-        }
-        
-        
-        /* Quote Form */
         .quote-form-container {
+            max-width: 900px;
+            margin: 0 auto;
             background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.1);
+            padding: 3.5rem;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); /* Stronger shadow for main form */
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .quote-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-orange));
         }
         
         .quote-form {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 2.5rem;
         }
         
         .form-section {
-            border-bottom: 1px solid #e9ecef;
-            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2.5rem;
         }
         
         .form-section:last-of-type {
@@ -633,294 +534,300 @@ include 'includes/header.php';
         }
         
         .form-section h3 {
-            color: #1a1a2e;
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            border-left: 4px solid #ff6b35;
-            padding-left: 1rem;
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .form-section h3::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--secondary-orange);
+            border-radius: 2px;
         }
         
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
         
         .form-group {
             display: flex;
             flex-direction: column;
+            gap: 0.6rem;
         }
         
         .form-group label {
             font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
+            color: var(--text-main);
             font-size: 0.95rem;
         }
         
         .form-group input,
         .form-group select,
         .form-group textarea {
-            padding: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             font-size: 1rem;
             transition: all 0.3s ease;
-            background: #f8f9fa;
+            background: #f8fafc;
+            color: var(--primary-dark);
+            font-family: inherit;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #94a3b8;
         }
         
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #ff6b35;
+            border-color: var(--primary-blue);
             background: white;
-            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
         
         .form-group textarea {
             resize: vertical;
-            font-family: inherit;
+            min-height: 120px;
         }
         
-        .form-group small {
-            color: #666;
-            font-size: 0.8rem;
-            margin-top: 0.3rem;
+        /* Quote Advantages Section */
+        .quote-advantages {
+            padding: 6rem 0;
+            background: white;
+            border-top: 1px solid var(--border-color);
         }
         
-        .checkbox-group {
-            margin-bottom: 1.5rem;
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
         }
         
-        .checkbox-title {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .checkbox-grid {
+        .advantages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
         }
         
-        .checkbox-item {
+        .advantage-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .advantage-card:hover {
+            background: white;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            border-color: var(--border-color);
+            transform: translateY(-5px);
+        }
+        
+        .advantage-icon {
+            width: 70px;
+            height: 70px;
+            background: #eff6ff;
+            color: var(--primary-blue);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            cursor: pointer;
-            padding: 0.8rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.75rem;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
-        .checkbox-item:hover {
-            background: #e9ecef;
-            border-color: #ff6b35;
+        .advantage-card:hover .advantage-icon {
+            transform: scale(1.1) rotate(5deg);
         }
         
-        .checkbox-item input[type="checkbox"] {
-            display: none;
+        .advantage-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
         }
         
-        .checkmark {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #ddd;
-            border-radius: 4px;
+        .advantage-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Process Steps */
+        .quote-process {
+            padding: 6rem 0;
+            background: #f1f5f9;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
             position: relative;
-            flex-shrink: 0;
+        }
+        
+        /* Connecting line for process steps */
+        .process-steps::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: #cbd5e1;
+            z-index: 0;
+        }
+        
+        .process-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
             transition: all 0.3s ease;
         }
         
-        .checkbox-item input:checked + .checkmark {
-            background: #ff6b35;
-            border-color: #ff6b35;
-        }
-        
-        .checkbox-item input:checked + .checkmark::after {
-            content: '✓';
-            position: absolute;
-            top: -2px;
-            left: 3px;
+        .process-step:hover .step-number {
+            background: var(--primary-blue);
             color: white;
-            font-size: 14px;
-            font-weight: bold;
+            transform: scale(1.1);
+            box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.1);
         }
         
+        .step-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            height: 100%;
+        }
+        
+        .step-content h3 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .step-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Buttons */
         .form-actions {
             display: flex;
-            gap: 1rem;
+            justify-content: center;
             margin-top: 1rem;
         }
         
         .btn {
             padding: 1rem 2rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             font-size: 1rem;
+            letter-spacing: 0.5px;
         }
         
         .btn-large {
-            padding: 1.2rem 2.5rem;
+            padding: 1.2rem 3rem;
             font-size: 1.1rem;
+            width: 100%;
+            justify-content: center;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #ff6b35, #ffd700);
-            color: #1a1a2e;
-            flex: 1;
-            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-blue), #1e40af);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, #ffd700, #ff6b35);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.5);
+            background: linear-gradient(135deg, #1e40af, var(--primary-blue));
         }
-        
-        .btn-secondary {
-            background: #f8f9fa;
-            color: #666;
-            border: 2px solid #e9ecef;
-        }
-        
-        .btn-secondary:hover {
-            background: #e9ecef;
-            color: #1a1a2e;
-            transform: translateY(-2px);
-            border-color: #ff6b35;
-        }
-        
-        /* Quote Advantages */
-        .quote-advantages {
-            padding: 4rem 0;
-            background: #f8f9fa;
-        }
-        
-        .advantages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .advantage-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .advantage-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .advantage-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #ff6b35, #ffd700);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.8rem;
-            color: #1a1a2e;
-        }
-        
-        .advantage-card h3 {
-            color: #1a1a2e;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-        
-        .advantage-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        /* Quote Process */
-        .quote-process {
-            padding: 4rem 0;
-        }
-        
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .process-step {
-            text-align: center;
-            position: relative;
-        }
-        
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #ff6b35, #ffd700);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #1a1a2e;
-        }
-        
-        .step-content h3 {
-            color: #1a1a2e;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-        
-        .step-content p {
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        /* Notification */
+
+        /* Notifications (Same as Contact Page) */
         .notification {
             position: fixed;
             top: 100px;
             right: 20px;
-            background: white;
             padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             z-index: 10000;
             display: flex;
             align-items: center;
             gap: 1rem;
-            min-width: 350px;
-            animation: slideInRight 0.3s ease;
+            min-width: 320px;
+            animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            border: 1px solid #e2e8f0;
         }
         
         .notification-success {
-            border-left: 4px solid #28a745;
+            border-left: 5px solid #10b981;
         }
         
         .notification-success i {
-            color: #28a745;
+            color: #10b981;
+            font-size: 1.2rem;
+        }
+        
+        .notification-error {
+            border-left: 5px solid #ef4444;
+        }
+        
+        .notification-error i {
+            color: #ef4444;
+            font-size: 1.2rem;
         }
         
         .notification-close {
@@ -928,108 +835,61 @@ include 'includes/header.php';
             border: none;
             font-size: 1.2rem;
             cursor: pointer;
-            color: #999;
+            color: #94a3b8;
             margin-left: auto;
+            padding: 0;
+            transition: color 0.2s;
+        }
+        
+        .notification-close:hover {
+            color: var(--primary-dark);
         }
         
         @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from { transform: translateX(100%) scale(0.9); opacity: 0; }
+            to { transform: translateX(0) scale(1); opacity: 1; }
         }
         
-        /* Responsive Design */
+        .field-error {
+            color: #ef4444 !important;
+            font-size: 0.85rem !important;
+            margin-top: 0.4rem !important;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .field-error::before {
+            content: '\f06a';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+
+        /* Responsive */
         @media (max-width: 1024px) {
-            .quote-benefits-row {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1.5rem;
+            .advantages-grid, .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-steps::after {
+                display: none;
             }
         }
         
         @media (max-width: 768px) {
-            .page-header {
-                padding: 100px 0 60px;
+            .form-row {
+                grid-template-columns: 1fr;
             }
-            
+            .quote-form-container {
+                padding: 1.5rem;
+            }
+            .advantages-grid, .process-steps {
+                grid-template-columns: 1fr;
+            }
             .page-header h1 {
                 font-size: 2.5rem;
             }
-            
             .quote-request-header h2 {
                 font-size: 2rem;
-            }
-            
-            .quote-benefits-row {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .benefit-item {
-                padding: 1.5rem;
-                gap: 1rem;
-            }
-            
-            .benefit-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .quote-form-container {
-                padding: 2rem;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .checkbox-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-actions {
-                flex-direction: column;
-            }
-            
-            .advantages-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            .process-steps {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .quote-form-container {
-                padding: 1.5rem;
-            }
-            
-            .quote-request-header h2 {
-                font-size: 1.8rem;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .benefit-item {
-                padding: 1rem;
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .benefit-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-            
-            .notification {
-                min-width: 300px;
-                right: 10px;
             }
         }
     </style>
