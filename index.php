@@ -941,7 +941,7 @@ include 'includes/header.php';
             <div class="news-gallery-grid">
                 <!-- Left Side - News & Updates -->
                 <div class="news-updates-full" data-aos="fade-right">
-                    <h2>News & Updates</h2>
+                    <h2>News & <span style="background: linear-gradient(120deg, #ff6b35, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Updates</span></h2>
                     <p class="news-intro">Stay updated with our latest announcements and industry news.</p>
                     
                     <div class="news-scroll-container">
@@ -1155,7 +1155,8 @@ include 'includes/header.php';
 
         <div class="container-redux">
             <div class="section-header-redux" data-aos="fade-up">
-                <h2 class="section-title-redux">Product Categories</h2>
+               
+                <h2 class="section-title-redux"><span style="color: #000000;">Our</span> <span style="background: linear-gradient(120deg, #ff6b35, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Products</span></h2>
                 <p class="section-subtitle-redux">Explore our comprehensive range of certified protection systems designed for maximum safety and durability.</p>
                 <div class="divider-redux"></div>
             </div>
@@ -1272,11 +1273,34 @@ include 'includes/header.php';
     <section id="industries-redux" class="section-redux section-industries-bg">
         <style>
             .section-industries-bg {
-                background-color: #f8fafc;
-                background-image: 
-                    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.03) 0px, transparent 50%),
-                    radial-gradient(at 100% 100%, rgba(255, 107, 53, 0.03) 0px, transparent 50%);
+                background-color: #020617; /* Very dark slate base */
+                background-image: url('Images/industrial_sectors_bg.png');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed; /* Parallax effect */
                 position: relative;
+                color: white;
+            }
+
+            .section-industries-bg::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.95));
+                z-index: 1;
+            }
+
+            .container-redux {
+                position: relative;
+                z-index: 2;
+            }
+
+            .section-header-redux .section-title-redux {
+                color: #ffffff;
+            }
+            
+            .section-header-redux .section-subtitle-redux {
+                color: #94a3b8;
             }
 
             .industries-grid-redux {
@@ -1287,14 +1311,16 @@ include 'includes/header.php';
             }
 
             .industry-card-modern {
-                background: white;
+                background: rgba(255, 255, 255, 0.03); /* Glassmorphism */
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
                 border-radius: 20px;
                 padding: 2.5rem 2rem;
                 position: relative;
                 overflow: hidden;
-                border: 1px solid #e2e8f0;
+                border: 1px solid rgba(255, 255, 255, 0.05);
                 transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
@@ -1307,7 +1333,7 @@ include 'includes/header.php';
                 position: absolute;
                 inset: 0;
                 border-radius: 20px;
-                padding: 2px;
+                padding: 1px;
                 background: linear-gradient(135deg, #2563eb, #ff6b35);
                 -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
                 -webkit-mask-composite: xor;
@@ -1319,7 +1345,8 @@ include 'includes/header.php';
 
             .industry-card-modern:hover {
                 transform: translateY(-8px);
-                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+                background: rgba(255, 255, 255, 0.07);
+                box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3);
             }
             
             .industry-card-modern:hover::before {
@@ -1330,13 +1357,13 @@ include 'includes/header.php';
                 width: 64px;
                 height: 64px;
                 border-radius: 16px;
-                background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-                border: 1px solid #e2e8f0;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 font-size: 1.5rem;
-                color: #64748b;
+                color: #94a3b8;
                 margin-bottom: 1.5rem;
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 position: relative;
@@ -1344,64 +1371,36 @@ include 'includes/header.php';
             }
 
             .industry-card-modern:hover .industry-icon-wrapper {
-                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                background: linear-gradient(135deg, #2563eb, #ff6b35);
                 border-color: transparent;
                 color: white;
-                transform: rotate(-10deg) scale(1.1);
-                box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
+                box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
             }
 
             .industry-title-modern {
                 font-size: 1.25rem;
                 font-weight: 800;
-                color: #1e293b;
+                color: #ffffff;
                 margin-bottom: 0.75rem;
                 line-height: 1.3;
                 transition: color 0.3s ease;
             }
 
             .industry-card-modern:hover .industry-title-modern {
-                color: #2563eb;
+                color: #ff6b35; /* Orange accent on hover */
             }
             
             .industry-desc-modern {
                 font-size: 0.95rem;
-                color: #64748b;
+                color: #cbd5e1; /* Lighter text for dark bg */
                 line-height: 1.6;
-                margin-bottom: 1.5rem;
-            }
-
-            .industry-link-arrow {
-                margin-top: auto;
-                color: #2563eb;
-                font-weight: 700;
-                font-size: 0.85rem;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                opacity: 0.7;
-                transform: translateX(0);
-                transition: all 0.3s ease;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
-
-            .industry-link-arrow i {
-                transition: transform 0.3s ease;
-            }
-
-            .industry-card-modern:hover .industry-link-arrow {
-                opacity: 1;
-                transform: translateX(4px);
-            }
-            .industry-card-modern:hover .industry-link-arrow i {
-                transform: translateX(4px);
+                margin-bottom: 0;
             }
         </style>
 
         <div class="container-redux">
             <div class="section-header-redux" data-aos="fade-up">
-                <span style="color: #ff6b35; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; display: block; margin-bottom: 1rem; background: rgba(255, 107, 53, 0.1); display: inline-block; padding: 4px 12px; border-radius: 20px;">Sectors Serviced</span>
+                <span style="color: #ff6b35; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; display: block; margin-bottom: 1rem; background: rgba(255, 107, 53, 0.1); display: inline-block; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255, 107, 53, 0.2);">Sectors Serviced</span>
                 <h2 class="section-title-redux">Protecting Critical Infrastructure</h2>
                 <p class="section-subtitle-redux">Specialized engineering solutions tailored to the unique risks and compliance standards of major industrial sectors.</p>
                 <div class="divider-redux"></div>
@@ -1790,7 +1789,7 @@ include 'includes/header.php';
             <div class="contact-layout-split">
                 <!-- Left: Content & Visuals -->
                 <div class="contact-info-side" data-aos="fade-right">
-                    <h2>Start Your <br>Project</h2>
+                    <h2>Start Your <br><span style="background: linear-gradient(120deg, #ff6b35, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Project</span></h2>
                     <p>Ready to engineer safety? Our team is on standby to provide rapid layouts, comprehensive risk assessments, and technical specifications for your next big project.</p>
                     
                     <div class="info-card-redux" data-aos="fade-up" data-aos-delay="200">
